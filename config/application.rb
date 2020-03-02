@@ -31,5 +31,13 @@ module Covid
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    config.time_zone = 'Paris'
+    config.i18n.default_locale = :fr
+
+    # Assets error -> https://github.com/rails/sprockets/issues/581#issuecomment-486984663
+    config.assets.configure do |env|
+      env.export_concurrent = false
+    end
   end
 end
