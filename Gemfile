@@ -40,6 +40,7 @@ gem 'rails-i18n', github: 'svenfuchs/rails-i18n' # RAILS 6
 
 gem 'brakeman'
 gem 'phony_rails'
+gem 'rotp'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-bootstrap', '> 4.1.2'
@@ -53,6 +54,7 @@ group :development, :test do
   gem 'guard-rspec', require: false
   gem 'factory_bot_rails'
   gem 'ffaker'
+  gem 'awesome_print'
 end
 
 group :development do

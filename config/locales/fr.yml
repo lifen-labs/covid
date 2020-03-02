@@ -2,6 +2,9 @@ fr:
   activemodel:
     errors:
       models:
+  attributes:
+    created_at: "Création le"
+    updated_at: "Dernière modification le"
   activerecord:
     models:
       admin_user:
@@ -10,11 +13,19 @@ fr:
       patient:
         one: "Patient"
         other: "Patients"
+      standard_survey:
+        one: "Questionnaire standard"
+        other: "Questionnaires standards"
     attributes:
       patient: &patient
         first_name: "Prénom"
         last_name: "Nom"
         cellphone_number: "Numéro de portable"
+      standard_survey: &standard_survey
+        patient: "Patient"
+        patient_id: "Patient (ID)"
+        body_temperature: "Température (°C)"
+        completed_at: "Complété le"
     errors:
       models:
         ip_domain:
@@ -26,6 +37,8 @@ fr:
     labels:
       create_patient_form:
         <<: *patient
+      update_standard_survey_form:
+        <<: *standard_survey
       required:
         text: "obligatoire"
         mark: ""

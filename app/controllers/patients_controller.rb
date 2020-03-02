@@ -10,7 +10,7 @@ class PatientsController < ApplicationController
     @form = CreatePatientForm.new(patient_create_params)
 
     if @form.submit
-      redirect_to admin_patients_path, notice: 'Patient créé.'
+      redirect_to admin_patient_path(@form.patient), notice: 'Patient créé.'
     else
       render :new
     end

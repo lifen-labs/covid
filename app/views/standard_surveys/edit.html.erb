@@ -1,0 +1,8 @@
+<%= render layout: '/shared/public_forms_outside_active_admin', locals: {title: "Questionnaire hebdomadaire"} do %>
+  <%= simple_form_for(@form, method: :patch, url: standard_survey_path(id: @form.standard_survey.public_token)) do |f| %>
+    <%= f.input :otp, as: :hidden %>
+    <%= f.input :body_temperature %>
+
+    <%= f.button :submit, value: "Valider", data: { disable_with: "Validation en cours ..." }, class: "btn btn-primary" %>
+  <% end %>
+<% end %>

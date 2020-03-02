@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_02_123243) do
+ActiveRecord::Schema.define(version: 2020_03_02_141452) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,20 @@ ActiveRecord::Schema.define(version: 2020_03_02_123243) do
     t.string "cellphone_number"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "otp_secret"
+    t.index ["otp_secret"], name: "index_patients_on_otp_secret", unique: true
   end
 
+  create_table "standard_surveys", force: :cascade do |t|
+    t.bigint "patient_id", null: false
+    t.float "body_temperature"
+    t.datetime "completed_at"
+    t.string "public_token"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["patient_id"], name: "index_standard_surveys_on_patient_id"
+    t.index ["public_token"], name: "index_standard_surveys_on_public_token", unique: true
+  end
+
+  add_foreign_key "standard_surveys", "patients"
 end

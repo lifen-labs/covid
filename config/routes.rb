@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
 
   resources :patients, only: [:new, :create]
+  resources :standard_surveys, only: [:edit, :update]
 end

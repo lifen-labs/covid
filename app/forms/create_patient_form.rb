@@ -12,6 +12,8 @@ class CreatePatientForm
   validates_presence_of :first_name, :last_name, :cellphone_number
 
   def submit
+    return false unless valid?
+
     @patient = Patient.new(patient_attributes)
 
     if @patient.save
@@ -29,7 +31,8 @@ class CreatePatientForm
       {
         first_name: first_name,
         last_name: last_name,
-        cellphone_number: cellphone_number
+        cellphone_number: cellphone_number,
+        otp_secret: ROTP::Base32.random
       }
     end
 
