@@ -1,0 +1,103 @@
+version: 2.1
+
+jobs:
+  checkout_code:
+    docker:
+      - image: circleci/ruby:2.6.5-node-browsers
+      - image: postgres:10.4-alpine
+    working_directory: ~/circleci-app
+    steps:
+      - checkout
+      - save_cache:
+          key: v1-repo-{{ .Environment.CIRCLE_SHA1 }}
+          paths:
+            - ~/circleci-app
+  bundle_dependencies:
+    docker:
+      - image: circleci/ruby:2.6.5-node-browsers
+      - image: postgres:10.4-alpine
+    working_directory: ~/circleci-app
+    steps:
+      - restore_cache:
+          keys:
+            - v1-repo-{{ .Environment.CIRCLE_SHA1 }}
+      - restore_cache:
+          keys:
+            - v1-bundle-{{ checksum "Gemfile.lock" }}
+      - run: bundle install --path vendor/bundle
+      - save_cache:
+          key: v1-bundle-{{ checksum "Gemfile.lock" }}
+          paths:
+            - ~/circleci-app/vendor/bundle
+  yarn_dependencies:
+    docker:
+      - image: circleci/ruby:2.6.5-node-browsers
+      - image: postgres:10.4-alpine
+    working_directory: ~/circleci-app
+    steps:
+      - restore_cache:
+          keys:
+            - v1-repo-{{ .Environment.CIRCLE_SHA1 }}
+      - restore_cache:
+          keys:
+            - v1-bundle-{{ checksum "Gemfile.lock" }}
+      - restore_cache:
+          keys:
+            - v1-yarn-{{ checksum "yarn.lock" }}
+      - run: bin/yarn install
+      - save_cache:
+          key: v1-yarn-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/.yarn-cache
+  test:
+    docker:
+      - image: circleci/ruby:2.6.5-node-browsers
+        environment:
+          RAILS_ENV: test
+          DATABASE_URL: postgres://postgres@127.0.0.1:5432/db_name
+      - image: postgres:10.4-alpine
+        environment:
+          POSTGRES_USER: root
+          POSTGRES_DB: db_name
+    working_directory: ~/circleci-app
+    steps:
+      - restore_cache:
+          keys:
+            - v1-repo-{{ .Environment.CIRCLE_SHA1 }}
+      - restore_cache:
+          keys:
+            - v1-bundle-{{ checksum "Gemfile.lock" }}
+      - restore_cache:
+          keys:
+            - v1-yarn-{{ checksum "yarn.lock" }}
+      - run: bundle --path vendor/bundle
+      - run: bin/yarn install
+      - run:
+          name: Wait for DB
+          command: dockerize -wait tcp://localhost:5432 -timeout 1m
+      - run: bundle exec rails db:create db:schema:load
+      - run: bundle exec rspec --color --require spec_helper --format RspecJunitFormatter --out ~/rspec/rspec.xml spec --format progress
+      - run: bundle exec brakeman
+      - store_test_results:
+          path: ~/rspec
+      - store_artifacts:
+          path: coverage
+
+workflows:
+  version: 2
+  main:
+    jobs:
+      - checkout_code
+      - bundle_dependencies:
+          requires:
+            - checkout_code
+      - yarn_dependencies:
+          requires:
+            - bundle_dependencies
+      - test:
+          requires:
+            - yarn_dependencies
+
+notify:
+  webhooks:
+    - url: https://15lsbxgw8f.execute-api.eu-west-1.amazonaws.com/prod/notify_slack

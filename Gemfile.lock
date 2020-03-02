@@ -81,6 +81,7 @@ GEM
     bindex (0.8.1)
     bootsnap (1.4.6)
       msgpack (~> 1.0)
+    brakeman (4.7.2)
     builder (3.2.4)
     byebug (11.1.1)
     concurrent-ruby (1.1.6)
@@ -287,6 +288,7 @@ PLATFORMS
 DEPENDENCIES
   activeadmin
   bootsnap (>= 1.4.2)
+  brakeman
   byebug
   devise
   jbuilder (~> 2.7)
