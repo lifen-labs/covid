@@ -1,0 +1,55 @@
+fr:
+  activemodel:
+    errors:
+      models:
+  activerecord:
+    models:
+      admin_user:
+        one: "Administrateur"
+        other: "Administrateurs"
+      patient:
+        one: "Patient"
+        other: "Patients"
+    attributes:
+      patient: &patient
+        first_name: "Prénom"
+        last_name: "Nom"
+        cellphone_number: "Numéro de portable"
+    errors:
+      models:
+        ip_domain:
+          attributes:
+            value:
+              invalid: "'%{value}' est invalide"
+              taken: "'%{value}' n'est pas disponible"
+  simple_form:
+    labels:
+      create_patient_form:
+        <<: *patient
+      required:
+        text: "obligatoire"
+        mark: ""
+  date:
+    formats:
+      datepicker: "%d/%m/%Y"
+      default: "%d/%m/%Y"
+      long: "%d/%m/%Y"
+      day_long: "%A %e %B %Y"
+      day_long_without_year: "%A %e %B"
+      day_short: "%A %d/%m/%y"
+      full_day: "%A"
+      full_day_and_day: "%A %e"
+      month_datepicker: "%m/%Y"
+      short: "%e %b"
+      month: "%B"
+      month_and_year: "%B %Y"
+      day_and_month: "%e %B"
+      day: "%a"
+  time:
+    formats:
+      day_long: "%A %e %B %Y"
+      short: "%kh%M"
+      long: "%d/%m/%Y à %Hh%M"
+      long_with_seconds: "%d/%m/%Y à %kh%M:%S"
+      month_long: "%e %B %Y - %Hh%M"
+

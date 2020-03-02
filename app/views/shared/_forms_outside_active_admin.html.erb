@@ -1,0 +1,21 @@
+ <div class="container">
+  <div class="row justify-content-center">
+    <div class="col-8" style="padding: 50px 0;">
+    	<h4>
+    		<% if !local_assigns[:back_button_path].nil? %>
+	    		<%= link_to "« Retour", local_assigns[:back_button_path], class: "btn btn-sm btn-light float-right" %>
+	    	<% end %>
+    		<% if !local_assigns[:title].nil? %>
+    			<%= title %>
+    		<% end %>
+    	</h4>
+
+    	<% if !local_assigns[:sub_title].nil? %>
+  			<h6><%= sub_title %></h6>
+  		<% end %>
+
+    	<hr>
+      <%= yield %>
+    </div>
+  </div>
+</div>

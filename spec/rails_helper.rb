@@ -9,6 +9,13 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
 
+require 'capybara/rspec'
+require 'factory_bot_rails'
+require 'sidekiq/testing'
+require 'webmock/rspec'
+require 'selenium/webdriver'
+require 'webdrivers'
+
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
 # run as spec files by default. This means that files in spec/support that end
@@ -22,7 +29,7 @@ require 'rspec/rails'
 # directory. Alternatively, in the individual `*_spec.rb` files, manually
 # require only the support files necessary.
 #
-# Dir[Rails.root.join('spec', 'support', '**', '*.rb')].each { |f| require f }
+Dir[Rails.root.join('spec', 'support', '**', '*.rb')].each { |f| require f }
 
 # Checks for pending migrations and applies them before tests are run.
 # If you are not using ActiveRecord, you can remove these lines.
@@ -60,4 +67,54 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+
+  # Factory Bot
+  config.include FactoryBot::Syntax::Methods
+
+  # Time helpers for those time-sentitive tests
+  config.include ActiveSupport::Testing::TimeHelpers
+
+  # Capybara
+  config.include Capybara::DSL
+
+  Capybara.configure do |capybara_config|
+    capybara_config.always_include_port = true
+  end
+
+  driver_options = {
+    headless_chrome: '',
+    mobile_chrome: '--window-size=375,812'
+  }
+
+  driver_options.each do |key, value|
+    Capybara.register_driver key do |app|
+      capabilities = Selenium::WebDriver::Remote::Capabilities.chrome(
+        'goog:chromeOptions': {args: ['headless', 'disable-gpu', value ].reject(&:empty?)}
+      )
+
+      Capybara::Selenium::Driver.new app,
+                                     browser: :chrome,
+                                     desired_capabilities: capabilities
+    end
+  end
+
+  Capybara.javascript_driver = :headless_chrome
+
+  Capybara.ignore_hidden_elements = false
+
+  config.before(:all, type: :feature) do
+    Capybara.server = :puma, {silent: true}
+  end
+
+  # Webmock
+  WebMock.disable_net_connect!(allow_localhost: true, allow: 'chromedriver.storage.googleapis.com')
+
+  # Devise
+  config.include Devise::Test::ControllerHelpers, type: :controller
+  # config.include Devise::TestHelpers, type: :controller
+  config.include Warden::Test::Helpers
+
+  config.before :suite do
+    Warden.test_mode!
+  end
 end

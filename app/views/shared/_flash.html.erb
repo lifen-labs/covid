@@ -1,0 +1,12 @@
+<div class="flash-messages" style='z-index:10000;'>
+  <%
+    flash.each do |key, value|
+      key = key == "notice" ? :success : key
+      key = key == "alert" ? :warning : key
+      key = key == "error" ? :danger : key
+    %>
+      <div class="alert alert-<%= key %>" role="alert">
+        <%= value %>
+      </div>
+  <% end %>
+</div>
