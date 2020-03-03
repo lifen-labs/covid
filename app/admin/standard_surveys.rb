@@ -7,10 +7,14 @@ ActiveAdmin.register StandardSurvey do
     end
   end
 
+  scope :completed, default: true
+  scope :to_complete
+
   index do
     id_column
     column :patient
     column :body_temperature
+    column :heartbeats_per_minute
     column :created_at
     column :completed_at
     actions
@@ -18,6 +22,12 @@ ActiveAdmin.register StandardSurvey do
 
   filter :patient_id
   filter :body_temperature
+  filter :cohabitants_recent_change
+  filter :breathing_difficulty
+  filter :breathing_difficulty_borg_scale
+  filter :heartbeats_per_minute
+  filter :recent_faintness
+  filter :agreed_containment
   filter :completed_at
   filter :created_at
 

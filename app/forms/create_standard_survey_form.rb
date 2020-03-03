@@ -15,7 +15,7 @@ class CreateStandardSurveyForm
     @standard_survey = patient.standard_surveys.new
 
     if @standard_survey.save
-      send_sms
+      safely_send_sms
 
       return true
     end
@@ -32,8 +32,12 @@ class CreateStandardSurveyForm
 
   private
 
-    def send_sms
+    def safely_send_sms
+      Raven.extra_context(standard_survey_id: standard_survey.id)
+
       SendSms.call(standard_survey.patient.cellphone_number, sms_message)
+    rescue StandardError => e
+      Raven.capture_exception(e)
     end
 
     def sms_message

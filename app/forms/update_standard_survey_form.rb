@@ -4,10 +4,17 @@ class UpdateStandardSurveyForm
   attr_accessor(
     :standard_survey,
     :otp,
-    :body_temperature
+    :body_temperature,
+    :cohabitants_recent_change,
+    :breathing_difficulty,
+    :breathing_difficulty_borg_scale,
+    :heartbeats_per_minute,
+    :recent_faintness,
+    :agreed_containment,
+    :agreed_containment_comment
   )
 
-  validates_presence_of :standard_survey, :otp, :body_temperature
+  validates_presence_of :standard_survey, :otp, :body_temperature, :cohabitants_recent_change, :breathing_difficulty, :breathing_difficulty_borg_scale, :heartbeats_per_minute, :recent_faintness, :agreed_containment, :agreed_containment_comment
   validate :valid_otp
 
   def submit
@@ -29,6 +36,13 @@ class UpdateStandardSurveyForm
     def standard_survey_attributes
       {
         body_temperature: filtered_body_temperature,
+        cohabitants_recent_change: cohabitants_recent_change,
+        breathing_difficulty: breathing_difficulty,
+        breathing_difficulty_borg_scale: breathing_difficulty_borg_scale,
+        heartbeats_per_minute: heartbeats_per_minute,
+        recent_faintness: recent_faintness,
+        agreed_containment: agreed_containment,
+        agreed_containment_comment: agreed_containment_comment,
         completed_at: DateTime.current
       }
     end

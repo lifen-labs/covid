@@ -1,7 +1,15 @@
 <%= render layout: '/shared/public_forms_outside_active_admin', locals: {title: "Questionnaire hebdomadaire"} do %>
   <%= simple_form_for(@form, method: :patch, url: standard_survey_path(id: @form.standard_survey.public_token)) do |f| %>
     <%= f.input :otp, as: :hidden %>
-    <%= f.input :body_temperature %>
+
+    <%= f.input :cohabitants_recent_change, label: "Depuis le dernier questionnaire, y-a-t-il eu un changement parmi les gens présents à votre domicile pendant le confinement ?", as: :select %>
+    <%= f.input :body_temperature, label: "Prenez votre température", hint: "°C" %>
+    <%= f.input :breathing_difficulty, label: "Gêne respiratoire / Difficultés à respire", hint: "Cochez la case correspondant le mieux à votre gêne respiratoire (échelle MRC)", as: :select, include_blank: false, collection: StandardSurvey.enum_filter_collection(:breathing_difficulties) %>
+    <%= f.input :breathing_difficulty_borg_scale, label: "Pour mieux caractériser votre gêne respiratoire, cochez la case correspondant le mieux à votre état", hint: "échelle de Borg modifiée de 0 à 10", as: :select, include_blank: false, collection: StandardSurvey.enum_filter_collection(:breathing_difficulty_borg_scales) %>
+    <%= f.input :heartbeats_per_minute, label: "Mesurez votre fréquence cardiaque", hint: "/minute" %>
+    <%= f.input :recent_faintness, as: :select %>
+    <%= f.input :agreed_containment, as: :select %>
+    <%= f.input :agreed_containment_comment, as: :text, hint: "optionnel" %>
 
     <%= f.button :submit, value: "Valider", data: { disable_with: "Validation en cours ..." }, class: "btn btn-primary" %>
   <% end %>
