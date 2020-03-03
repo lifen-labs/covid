@@ -12,8 +12,15 @@ class Patient < ApplicationRecord
   enum comorbidity_smoking: {yes: 'yes', never: 'never', former_smoker: 'former_smoker'}, _prefix: true
 
   def to_s
+    return "Patient ##{id}" if first_name.blank? && last_name.blank?
+
     "#{first_name} #{last_name}"
   end
+
+  def display_name
+    to_s
+  end
+
 
   def otp_service
     @_otp_service ||= ROTP::TOTP.new(otp_secret, issuer: 'Authentication service')
