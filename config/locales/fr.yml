@@ -107,6 +107,14 @@ fr:
         agreed_containment: "Respect des conditions de confinement"
         agreed_containment_comment: "Respect des conditions de confinement (commentaire)"
         completed_at: "Complété le"
+        status: "Statut"
+        statuses:
+          green: "Vert"
+          yellow: "Jaune"
+          orange: "Orange"
+          red: "Rouge"
+        respiratory_rate_in_cycles_per_minute: "Fréquence respiratoire"
+        recent_cold_chill: "Frisson récent"
       command_center:
         name: "Intitulé"
         city: "Ville"

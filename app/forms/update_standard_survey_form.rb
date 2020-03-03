@@ -24,6 +24,8 @@ class UpdateStandardSurveyForm
     standard_survey.attributes = standard_survey_attributes
 
     if standard_survey.save
+      standard_survey.set_status!
+
       return true
     end
 

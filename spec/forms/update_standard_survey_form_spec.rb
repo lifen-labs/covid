@@ -50,6 +50,8 @@ RSpec.describe UpdateStandardSurveyForm, type: :model do
       expect(standard_survey.respiratory_rate_in_cycles_per_minute).to eq respiratory_rate_in_cycles_per_minute
       expect(standard_survey.recent_cold_chill).to eq recent_cold_chill
       expect(standard_survey.completed_at).to_not be_nil
+
+      expect(standard_survey.status).to_not be_nil
     end
 
     context 'without agreed_containment_comment' do

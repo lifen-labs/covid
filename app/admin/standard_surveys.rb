@@ -9,18 +9,23 @@ ActiveAdmin.register StandardSurvey do
 
   scope :completed, default: true
   scope :to_complete
+  scope :green
+  scope :yellow
+  scope :orange
+  scope :red
 
   index do
     id_column
     column :patient
+    column(:status) { |standard_survey| status_tag(StandardSurvey.human_enum_name('status', standard_survey.status), class: "standard_survey_status_#{standard_survey.status}") }
     column :body_temperature
-    column :heartbeats_per_minute
     column :created_at
     column :completed_at
     actions
   end
 
   filter :patient_id
+  filter :status, as: :select, collection: StandardSurvey.enum_filter_collection('status')
   filter :body_temperature
   filter :cohabitants_recent_change
   filter :breathing_difficulty_borg_scale

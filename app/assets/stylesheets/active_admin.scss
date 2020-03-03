@@ -15,3 +15,18 @@
 // For example, to change the default status-tag color:
 //
 //   .status_tag { background: #6090DB; }
+
+.status_tag {
+  &.standard_survey_status_orange {
+    background: #ff6742;
+  }
+  &.standard_survey_status_green {
+    background: #38ad18;
+  }
+  &.standard_survey_status_red {
+    background: #d45f53;
+  }
+  &.standard_survey_status_yellow {
+    background: #ffcc22;
+  }
+}
