@@ -4,9 +4,10 @@
 
     <%= f.input :cohabitants_recent_change, autofocus: true, label: "Depuis le dernier questionnaire, y-a-t-il eu un changement parmi les gens présents à votre domicile pendant le confinement ?", as: :radio_buttons %>
     <%= f.input :body_temperature, as: :float, label: "Prenez votre température", hint: "°C" %>
-    <%= f.input :breathing_difficulty, label: "Gêne respiratoire / Difficultés à respirer", hint: "Cochez la case correspondant le mieux à votre gêne respiratoire (échelle MRC)", as: :select, include_blank: false, collection: StandardSurvey.enum_filter_collection(:breathing_difficulties) %>
-    <%= f.input :breathing_difficulty_borg_scale, label: "Pour mieux caractériser votre gêne respiratoire, cochez la case correspondant le mieux à votre état", hint: "échelle de Borg modifiée de 0 à 10", as: :select, include_blank: false, collection: StandardSurvey.enum_filter_collection(:breathing_difficulty_borg_scales) %>
+    <%= f.input :breathing_difficulty_borg_scale, label: "Cochez la case décrivant le mieux votre gêne respiratoire (sensation d’étouffement, dyspnée)", as: :select, include_blank: false, collection: StandardSurvey.enum_filter_collection(:breathing_difficulty_borg_scales) %>
     <%= f.input :heartbeats_per_minute, as: :integer, label: "Mesurez votre fréquence cardiaque", hint: "/minute" %>
+    <%= f.input :respiratory_rate_in_cycles_per_minute, as: :integer, label: "Mesurez votre fréquence respiratoire", hint: "cycles/minutes" %>
+    <%= f.input :recent_cold_chill, as: :radio_buttons, label: "Depuis que vous avez rempli le dernier questionnaire, avez-vous eu des frissons ?", hint: "Un frisson est une sensation de froid accompagnée de tremblements." %>
     <%= f.input :recent_faintness, label: "Depuis que vous avez rempli le dernier questionnaire, avez-vous fait un malaise ?", as: :radio_buttons %>
     <%= f.input :agreed_containment, label: "Vous sentez vous capable de continuer à respecter les conditions de confinement ?", as: :radio_buttons %>
     <%= f.input :agreed_containment_comment, label: "Si Non, pourquoi ?", as: :text, hint: "optionnel" %>

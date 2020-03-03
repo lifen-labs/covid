@@ -6,15 +6,16 @@ class UpdateStandardSurveyForm
     :otp,
     :body_temperature,
     :cohabitants_recent_change,
-    :breathing_difficulty,
     :breathing_difficulty_borg_scale,
     :heartbeats_per_minute,
     :recent_faintness,
     :agreed_containment,
-    :agreed_containment_comment
+    :agreed_containment_comment,
+    :respiratory_rate_in_cycles_per_minute,
+    :recent_cold_chill
   )
 
-  validates_presence_of :standard_survey, :otp, :body_temperature, :cohabitants_recent_change, :breathing_difficulty, :breathing_difficulty_borg_scale, :heartbeats_per_minute, :recent_faintness, :agreed_containment
+  validates_presence_of :standard_survey, :otp, :body_temperature, :cohabitants_recent_change, :breathing_difficulty_borg_scale, :heartbeats_per_minute, :recent_faintness, :agreed_containment, :respiratory_rate_in_cycles_per_minute, :recent_cold_chill
   validate :valid_otp
 
   def submit
@@ -37,12 +38,13 @@ class UpdateStandardSurveyForm
       {
         body_temperature: filtered_body_temperature,
         cohabitants_recent_change: cohabitants_recent_change,
-        breathing_difficulty: breathing_difficulty,
         breathing_difficulty_borg_scale: breathing_difficulty_borg_scale,
         heartbeats_per_minute: heartbeats_per_minute,
         recent_faintness: recent_faintness,
         agreed_containment: agreed_containment,
         agreed_containment_comment: agreed_containment_comment,
+        respiratory_rate_in_cycles_per_minute: respiratory_rate_in_cycles_per_minute,
+        recent_cold_chill: recent_cold_chill,
         completed_at: DateTime.current
       }
     end

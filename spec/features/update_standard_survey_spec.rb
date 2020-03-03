@@ -7,10 +7,11 @@ RSpec.describe 'updating a StandardSurvey', type: :feature do
   let(:otp)                                   { patient.generate_otp }
   let(:body_temperature)                      { "37,2" }
   let(:cohabitants_recent_change)             { "Oui" }
-  let(:breathing_difficulty)                  { "1 - Gêne respiratoire (dyspnée) pour les efforts soutenus (montée 2 étages)" }
   let(:breathing_difficulty_borg_scale)       { "0.5 - Très, très légère" }
   let(:heartbeats_per_minute)                 { "110" }
+  let(:respiratory_rate_in_cycles_per_minute) { "110" }
   let(:recent_faintness)                      { "Oui" }
+  let(:recent_cold_chill)                     { "Oui" }
   let(:agreed_containment)                    { "Oui" }
   let(:agreed_containment_comment)            { "comment" }
 
@@ -23,10 +24,11 @@ RSpec.describe 'updating a StandardSurvey', type: :feature do
 
         fill_in :update_standard_survey_form_body_temperature, with: body_temperature
         choose(:update_standard_survey_form_cohabitants_recent_change_true)
-        select breathing_difficulty, from: :update_standard_survey_form_breathing_difficulty
         select breathing_difficulty_borg_scale, from: :update_standard_survey_form_breathing_difficulty_borg_scale
         fill_in :update_standard_survey_form_heartbeats_per_minute, with: heartbeats_per_minute
+        fill_in :update_standard_survey_form_respiratory_rate_in_cycles_per_minute, with: respiratory_rate_in_cycles_per_minute
         choose(:update_standard_survey_form_recent_faintness_true)
+        choose(:update_standard_survey_form_recent_cold_chill_true)
         choose(:update_standard_survey_form_agreed_containment_true)
         fill_in :update_standard_survey_form_agreed_containment_comment, with: agreed_containment_comment
 
@@ -48,10 +50,11 @@ RSpec.describe 'updating a StandardSurvey', type: :feature do
 
         fill_in :update_standard_survey_form_body_temperature, with: body_temperature
         choose(:update_standard_survey_form_cohabitants_recent_change_true)
-        select breathing_difficulty, from: :update_standard_survey_form_breathing_difficulty
         select breathing_difficulty_borg_scale, from: :update_standard_survey_form_breathing_difficulty_borg_scale
         fill_in :update_standard_survey_form_heartbeats_per_minute, with: heartbeats_per_minute
+        fill_in :update_standard_survey_form_respiratory_rate_in_cycles_per_minute, with: respiratory_rate_in_cycles_per_minute
         choose(:update_standard_survey_form_recent_faintness_true)
+        choose(:update_standard_survey_form_recent_cold_chill_true)
         choose(:update_standard_survey_form_agreed_containment_true)
         fill_in :update_standard_survey_form_agreed_containment_comment, with: agreed_containment_comment
 

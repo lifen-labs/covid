@@ -23,11 +23,12 @@ ActiveAdmin.register StandardSurvey do
   filter :patient_id
   filter :body_temperature
   filter :cohabitants_recent_change
-  filter :breathing_difficulty
   filter :breathing_difficulty_borg_scale
   filter :heartbeats_per_minute
   filter :recent_faintness
   filter :agreed_containment
+  filter :respiratory_rate_in_cycles_per_minute
+  filter :recent_cold_chill
   filter :completed_at
   filter :created_at
 
