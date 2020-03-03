@@ -41,6 +41,7 @@ gem 'rails-i18n', github: 'svenfuchs/rails-i18n' # RAILS 6
 gem 'brakeman'
 gem 'phony_rails'
 gem 'rotp'
+gem 'twilio-ruby'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-bootstrap', '> 4.1.2'

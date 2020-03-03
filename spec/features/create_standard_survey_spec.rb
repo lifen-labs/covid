@@ -1,7 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe 'creating a StandardSurvey for a Patient', type: :feature do
-  let(:patient)           { create :patient }
+  let(:patient) { create :patient }
+
+  before(:each) do
+    allow(SendSms).to receive(:call)
+  end
 
   describe 'Creating a StandardSurvey', js: true do
     context 'authenticated' do
@@ -16,7 +20,7 @@ RSpec.describe 'creating a StandardSurvey for a Patient', type: :feature do
           visit admin_patient_path(patient)
 
           expect {
-            click_on "Créer un questionnaire standard"
+            click_on 'Créer un questionnaire standard'
           }.to change(patient.standard_surveys, :count).by(1)
         end
       end

@@ -22,7 +22,7 @@ ActiveAdmin.register StandardSurvey do
   filter :created_at
 
   action_item(:edit_standard_survey, only: :show) do
-    link_to 'Remplir le formulaire', edit_standard_survey_url(id: standard_survey.public_token, otp: standard_survey.patient.generate_otp), target: '_blank'
+    link_to 'Remplir le formulaire', standard_survey.temporary_url, target: '_blank'
   end
 
 end

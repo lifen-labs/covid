@@ -39,5 +39,10 @@ module Covid
     config.assets.configure do |env|
       env.export_concurrent = false
     end
+
+    # Twilio
+    config.twilio_account_id = ENV.fetch('TWILIO_ACCOUNT_ID', 'missing-twilio-account-id')
+    config.twilio_auth_token = ENV.fetch('TWILIO_AUTH_TOKEN', 'missing-twilio-auth-token')
+    config.twilio_phone_number = ENV.fetch('TWILIO_PHONE_NUMBER', 'missing-twilio-phone-bumber')
   end
 end
