@@ -48,6 +48,14 @@ RSpec.describe UpdateStandardSurveyForm, type: :model do
       expect(standard_survey.agreed_containment_comment).to eq agreed_containment_comment
       expect(standard_survey.completed_at).to_not be_nil
     end
+
+    context 'without agreed_containment_comment' do
+      let(:agreed_containment_comment) { nil }
+
+      it 'updates the StandardSurvey' do
+        expect(form.submit).to be_truthy
+      end
+    end
   end
 
   context 'with incorrect OTP' do

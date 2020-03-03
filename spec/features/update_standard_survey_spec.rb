@@ -22,12 +22,12 @@ RSpec.describe 'updating a StandardSurvey', type: :feature do
         visit edit_standard_survey_path(id: standard_survey.public_token, otp: otp)
 
         fill_in :update_standard_survey_form_body_temperature, with: body_temperature
-        select cohabitants_recent_change, from: :update_standard_survey_form_cohabitants_recent_change
+        choose(:update_standard_survey_form_cohabitants_recent_change_true)
         select breathing_difficulty, from: :update_standard_survey_form_breathing_difficulty
         select breathing_difficulty_borg_scale, from: :update_standard_survey_form_breathing_difficulty_borg_scale
         fill_in :update_standard_survey_form_heartbeats_per_minute, with: heartbeats_per_minute
-        select recent_faintness, from: :update_standard_survey_form_recent_faintness
-        select agreed_containment, from: :update_standard_survey_form_agreed_containment
+        choose(:update_standard_survey_form_recent_faintness_true)
+        choose(:update_standard_survey_form_agreed_containment_true)
         fill_in :update_standard_survey_form_agreed_containment_comment, with: agreed_containment_comment
 
         click_on 'Valider'
@@ -47,12 +47,12 @@ RSpec.describe 'updating a StandardSurvey', type: :feature do
         visit edit_standard_survey_path(id: standard_survey.public_token, otp: otp)
 
         fill_in :update_standard_survey_form_body_temperature, with: body_temperature
-        select cohabitants_recent_change, from: :update_standard_survey_form_cohabitants_recent_change
+        choose(:update_standard_survey_form_cohabitants_recent_change_true)
         select breathing_difficulty, from: :update_standard_survey_form_breathing_difficulty
         select breathing_difficulty_borg_scale, from: :update_standard_survey_form_breathing_difficulty_borg_scale
         fill_in :update_standard_survey_form_heartbeats_per_minute, with: heartbeats_per_minute
-        select recent_faintness, from: :update_standard_survey_form_recent_faintness
-        select agreed_containment, from: :update_standard_survey_form_agreed_containment
+        choose(:update_standard_survey_form_recent_faintness_true)
+        choose(:update_standard_survey_form_agreed_containment_true)
         fill_in :update_standard_survey_form_agreed_containment_comment, with: agreed_containment_comment
 
         click_on 'Valider'

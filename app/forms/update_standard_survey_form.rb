@@ -14,7 +14,7 @@ class UpdateStandardSurveyForm
     :agreed_containment_comment
   )
 
-  validates_presence_of :standard_survey, :otp, :body_temperature, :cohabitants_recent_change, :breathing_difficulty, :breathing_difficulty_borg_scale, :heartbeats_per_minute, :recent_faintness, :agreed_containment, :agreed_containment_comment
+  validates_presence_of :standard_survey, :otp, :body_temperature, :cohabitants_recent_change, :breathing_difficulty, :breathing_difficulty_borg_scale, :heartbeats_per_minute, :recent_faintness, :agreed_containment
   validate :valid_otp
 
   def submit

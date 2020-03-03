@@ -84,10 +84,10 @@ fr:
         breathing_difficulty: "Gêne respiratoire"
         breathing_difficulties:
           "1": "1 - Gêne respiratoire (dyspnée) pour les efforts soutenus (montée 2 étages)"
-          "2": "2 - Gêne respiratoire (dyspnée)  lors de la marche rapide ou en pente"
-          "3": "3 - Gêne respiratoire (dyspnée)  à la marche sur terrain plat en suivant quelqu’un de son âge ou obligeant à s'arrêter pour reprendre son souffle en marchant sur terrain plat à son propre rythme"
-          "4": "4 - Gêne respiratoire (dyspnée)  obligeant à s'arrêter pour reprendre son souffle après quelques minutes ou une centaine de mètres sur terrain plat"
-          "5": "5 - Gêne respiratoire (dyspnée)  au moindre effort de la vie courante (habillage, déshabillage). Trop essoufflé pour quitter le domicile"
+          "2": "2 - Gêne respiratoire (dyspnée) lors de la marche rapide ou en pente"
+          "3": "3 - Gêne respiratoire (dyspnée) à la marche sur terrain plat en suivant quelqu’un de son âge ou obligeant à s'arrêter pour reprendre son souffle en marchant sur terrain plat à son propre rythme"
+          "4": "4 - Gêne respiratoire (dyspnée) obligeant à s'arrêter pour reprendre son souffle après quelques minutes ou une centaine de mètres sur terrain plat"
+          "5": "5 - Gêne respiratoire (dyspnée) au moindre effort de la vie courante (habillage, déshabillage). Trop essoufflé pour quitter le domicile"
         breathing_difficulty_borg_scale: " Gêne respiratoire (Borg)"
         breathing_difficulty_borg_scales:
           "0": "0 - Rien"
