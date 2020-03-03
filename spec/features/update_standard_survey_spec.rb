@@ -66,5 +66,15 @@ RSpec.describe 'updating a StandardSurvey', type: :feature do
         expect(body).to have_content("Otp n'est pas valide")
       end
     end
+
+    context 'completed' do
+      let(:standard_survey) { create :standard_survey, patient: patient, completed_at: 1.hour.ago }
+
+      it 'prevents the StandardSurvey update' do
+        visit edit_standard_survey_path(id: standard_survey.public_token, otp: otp)
+
+        expect(body).to have_content("Ce questionnaire n'existe pas ou a déjà été rempli.")
+      end
+    end
   end
 end

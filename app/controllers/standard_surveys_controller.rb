@@ -1,5 +1,7 @@
 class StandardSurveysController < ApplicationController
 
+  rescue_from ActiveRecord::RecordNotFound, with: :not_found
+
   def edit
     @form = UpdateStandardSurveyForm.new(standard_survey: standard_survey, otp: params[:otp])
   end
@@ -9,17 +11,21 @@ class StandardSurveysController < ApplicationController
     @form.standard_survey = standard_survey
 
     if @form.submit
-      flash[:success] = "Questionnaire renseigné avec succès."
       render :update
     else
       render :edit
     end
   end
 
+  def not_found
+    render :not_found
+  end
+
+
   private
 
     def standard_survey
-      @_standard_survey = StandardSurvey.find_by!(public_token: params[:id])
+      @_standard_survey = StandardSurvey.to_complete.find_by!(public_token: params[:id])
     end
 
 
