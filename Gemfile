@@ -43,6 +43,8 @@ gem 'phony_rails'
 gem 'rotp'
 gem 'twilio-ruby'
 
+gem 'sentry-raven'
+
 source 'https://rails-assets.org' do
   gem 'rails-assets-bootstrap', '> 4.1.2'
 end

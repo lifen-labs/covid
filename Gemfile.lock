@@ -307,6 +307,8 @@ GEM
     selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
+    sentry-raven (2.13.0)
+      faraday (>= 0.7.6, < 1.0)
     shellany (0.0.1)
     sidekiq (6.0.4)
       connection_pool (>= 2.2.2)
@@ -397,6 +399,7 @@ DEPENDENCIES
   rspec_junit_formatter
   sass-rails (>= 6)
   selenium-webdriver
+  sentry-raven
   sidekiq
   sidekiq-scheduler
   simple_form

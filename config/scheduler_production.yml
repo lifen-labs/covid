@@ -1,0 +1,2 @@
+CreateStandardSurveyJob:
+  cron: "0 0 * * * *" # Runs every days & every hours

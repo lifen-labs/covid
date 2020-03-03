@@ -25,6 +25,11 @@ class CreateStandardSurveyForm
     false
   end
 
+  def submit!
+    raise StandardError unless submit
+  end
+
+
   private
 
     def send_sms
