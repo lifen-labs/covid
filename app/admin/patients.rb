@@ -1,8 +1,15 @@
 ActiveAdmin.register Patient do
   actions :index, :show
 
+  controller do
+    def scoped_collection
+      super.includes :command_center
+    end
+  end
+
   index do
     id_column
+    column :command_center
     column :first_name
     column :last_name
     column :cellphone_number
@@ -10,6 +17,7 @@ ActiveAdmin.register Patient do
     actions
   end
 
+  filter :command_center
   filter :first_name
   filter :last_name
   filter :cellphone_number

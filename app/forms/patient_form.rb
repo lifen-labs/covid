@@ -43,7 +43,8 @@ class PatientForm
     :comorbidity_malnutrition,
     :comorbidity_smoking,
     :comorbidity_other,
-    :comorbidity_other_comment
+    :comorbidity_other_comment,
+    :command_center_id
   )
 
   validates_presence_of :first_name, :last_name, :cellphone_number
@@ -93,7 +94,8 @@ class PatientForm
         comorbidity_malnutrition: comorbidity_malnutrition,
         comorbidity_smoking: comorbidity_smoking,
         comorbidity_other: comorbidity_other,
-        comorbidity_other_comment: comorbidity_other_comment
+        comorbidity_other_comment: comorbidity_other_comment,
+        command_center_id: command_center_id
       }
     end
 

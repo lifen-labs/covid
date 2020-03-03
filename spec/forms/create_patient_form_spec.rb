@@ -4,6 +4,8 @@ RSpec.describe CreatePatientForm, type: :model do
 
   let(:patient)                                         { build_stubbed :patient }
 
+  let(:command_center)                                  { create :command_center }
+
   let(:first_name)                                      { patient.first_name }
   let(:last_name)                                       { patient.last_name }
   let(:cellphone_number)                                { patient.cellphone_number }
@@ -91,7 +93,8 @@ RSpec.describe CreatePatientForm, type: :model do
       comorbidity_malnutrition: comorbidity_malnutrition,
       comorbidity_smoking: comorbidity_smoking,
       comorbidity_other: comorbidity_other,
-      comorbidity_other_comment: comorbidity_other_comment
+      comorbidity_other_comment: comorbidity_other_comment,
+      command_center_id: command_center.id
     }
   end
 
@@ -107,6 +110,7 @@ RSpec.describe CreatePatientForm, type: :model do
 
       expect(patient.first_name).to eq first_name
       expect(patient.otp_secret).to_not be_nil
+      expect(patient.command_center).to eq command_center
     end
   end
 

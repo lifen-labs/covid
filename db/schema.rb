@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_03_102516) do
+ActiveRecord::Schema.define(version: 2020_03_03_122930) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,13 @@ ActiveRecord::Schema.define(version: 2020_03_03_102516) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_admin_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
+  end
+
+  create_table "command_centers", force: :cascade do |t|
+    t.string "name"
+    t.string "city"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "patients", force: :cascade do |t|
@@ -74,6 +81,8 @@ ActiveRecord::Schema.define(version: 2020_03_03_102516) do
     t.string "comorbidity_smoking"
     t.boolean "comorbidity_other"
     t.text "comorbidity_other_comment"
+    t.bigint "command_center_id"
+    t.index ["command_center_id"], name: "index_patients_on_command_center_id"
     t.index ["otp_secret"], name: "index_patients_on_otp_secret", unique: true
   end
 
@@ -95,5 +104,6 @@ ActiveRecord::Schema.define(version: 2020_03_03_102516) do
     t.index ["public_token"], name: "index_standard_surveys_on_public_token", unique: true
   end
 
+  add_foreign_key "patients", "command_centers"
   add_foreign_key "standard_surveys", "patients"
 end

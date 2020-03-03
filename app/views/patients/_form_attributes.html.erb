@@ -12,6 +12,7 @@
 <%= f.input :relative_cellphone_number %>
 <%= f.input :general_practitioner, as: :text, hint: "Nom / Prénom / Coordonnées" %>
 <%= f.input :covid_general_practitioner, as: :text, hint: "Nom / Prénom" %>
+<%= f.input :command_center_id, label: "Centre", collection: CommandCenter.all.order(name: :asc), include_blank: false %>
 <%= f.input :gender, as: :select, collection: Patient.enum_filter_collection(:genders) %>
 <%= f.input :birthdate, input_html: {data: {controller: "flatpickr"}} %>
 <%= f.input :is_healthcare_professional, as: :select %>

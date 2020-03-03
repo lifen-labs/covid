@@ -27,6 +27,9 @@ RSpec.describe 'creating a Patient', type: :feature do
   let(:sars_cov_2_treatment_name)                       { patient.sars_cov_2_treatment_name }
   let(:home_follow_up_elligible)                        { patient.home_follow_up_elligible }
 
+  let!(:command_center)                                 { create :command_center }
+  let!(:other_command_center)                           { create :command_center }
+
   describe 'Creating a Patient', js: true do
     context 'authenticated' do
       let(:admin_user) { create :admin_user }
@@ -43,9 +46,15 @@ RSpec.describe 'creating a Patient', type: :feature do
           fill_in :create_patient_form_first_name, with: first_name
           fill_in :create_patient_form_last_name, with: last_name
 
+          select command_center.name, from: :create_patient_form_command_center_id
+
           expect {
             click_on 'Créer'
           }.to change(Patient, :count).by(1)
+
+          patient = Patient.last
+
+          expect(patient.command_center).to eq command_center
         end
       end
     end

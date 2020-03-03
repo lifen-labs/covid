@@ -16,6 +16,9 @@ fr:
       standard_survey:
         one: "Questionnaire standard"
         other: "Questionnaires standards"
+      command_center:
+        one: "Centre"
+        other: "Centres"
     attributes:
       patient: &patient
         first_name: "Prénom"
@@ -71,6 +74,8 @@ fr:
           "yes": "Oui"
         comorbidity_other: "Autre facteur de risque notable"
         comorbidity_other_comment: "Autre facteur de risque notable (commentaire)"
+        command_center: "Centre"
+        command_center_id: "Centre (ID)"
       standard_survey: &standard_survey
         patient: "Patient"
         patient_id: "Patient (ID)"
@@ -102,6 +107,9 @@ fr:
         agreed_containment: "Respect des conditions de confinement"
         agreed_containment_comment: "Respect des conditions de confinement (commentaire)"
         completed_at: "Complété le"
+      command_center:
+        name: "Intitulé"
+        city: "Ville"
     errors:
       models:
         ip_domain:

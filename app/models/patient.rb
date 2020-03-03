@@ -5,6 +5,7 @@ class Patient < ApplicationRecord
   phony_normalize :relative_cellphone_number, default_country_code: 'FR'
 
   has_many :standard_surveys, dependent: :destroy
+  belongs_to :command_center, optional: true
 
   enum gender: {male: 'male', female: 'female'}, _prefix: true
   enum covid_initial_symptom: {mild: 'mild', post_severe: 'post_severe', post_critical: 'post_critical'}, _prefix: true
