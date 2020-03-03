@@ -1,8 +1,7 @@
 <%= render layout: '/shared/forms_outside_active_admin', locals: {back_button_path: admin_patients_path, title: "Créer un patient"} do %>
   <%= simple_form_for(@form, method: :post, url: patients_path) do |f| %>
-    <%= f.input :first_name %>
-    <%= f.input :last_name %>
-    <%= f.input :cellphone_number %>
+
+    <%= render 'form_attributes', f: f %>
 
     <%= f.button :submit, value: "Créer", data: { disable_with: "Validation en cours ..." }, class: "btn btn-primary" %>
   <% end %>

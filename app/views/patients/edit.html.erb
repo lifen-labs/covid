@@ -1,0 +1,8 @@
+<%= render layout: '/shared/forms_outside_active_admin', locals: {back_button_path: admin_patients_path, title: "Modifier un patient"} do %>
+  <%= simple_form_for(@form, method: :put, url: patient_path(@form.patient)) do |f| %>
+
+    <%= render 'form_attributes', f: f %>
+
+    <%= f.button :submit, value: "Mettre à jour", data: { disable_with: "Validation en cours ..." }, class: "btn btn-primary" %>
+  <% end %>
+<% end %>

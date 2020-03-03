@@ -44,6 +44,7 @@ gem 'rotp'
 gem 'twilio-ruby'
 
 gem 'sentry-raven'
+gem 'flatpickr'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-bootstrap', '> 4.1.2'

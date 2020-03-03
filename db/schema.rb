@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_03_081810) do
+ActiveRecord::Schema.define(version: 2020_03_03_102516) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,45 @@ ActiveRecord::Schema.define(version: 2020_03_03_081810) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "otp_secret"
     t.integer "survey_periodicity_in_hours", default: 24
+    t.text "address"
+    t.string "email"
+    t.text "relative_cellphone_number"
+    t.text "general_practitioner"
+    t.text "covid_general_practitioner"
+    t.string "gender"
+    t.date "birthdate"
+    t.boolean "is_healthcare_professional"
+    t.boolean "pregnant"
+    t.boolean "home_caregivers"
+    t.string "home_caregivers_type"
+    t.string "covid_initial_symptom"
+    t.date "covid_initial_symptoms_diagnosed_on"
+    t.date "covid_initial_symptoms_started_on"
+    t.date "covid_treatment_started_on"
+    t.boolean "interstitial_alveolus_infiltrates"
+    t.text "notable_long_term_treatments"
+    t.boolean "sars_cov_2_treatment"
+    t.text "sars_cov_2_treatment_name"
+    t.boolean "home_follow_up_elligible"
+    t.boolean "comorbidity_chronic_cardiac_disease"
+    t.boolean "comorbidity_chronic_pulmonary_disease"
+    t.boolean "comorbidity_asthma"
+    t.boolean "comorbidity_chronic_kidney_disease"
+    t.boolean "comorbidity_liver_disease"
+    t.boolean "comorbidity_mild_liver_disease"
+    t.boolean "comorbidity_chronic_neurological_disorder"
+    t.boolean "comorbidity_malignant_neoplasia"
+    t.boolean "comorbidity_chronic_hemathological_disease"
+    t.boolean "comorbidity_hiv"
+    t.boolean "comorbidity_obesity"
+    t.boolean "comorbidity_diabetes_with_complications"
+    t.boolean "comorbidity_diabetes"
+    t.boolean "comorbidity_rheumatologic_disease"
+    t.boolean "comorbidity_dementia"
+    t.boolean "comorbidity_malnutrition"
+    t.string "comorbidity_smoking"
+    t.boolean "comorbidity_other"
+    t.text "comorbidity_other_comment"
     t.index ["otp_secret"], name: "index_patients_on_otp_secret", unique: true
   end
 

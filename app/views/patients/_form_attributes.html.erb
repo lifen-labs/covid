@@ -1,0 +1,73 @@
+<fieldset class="form-group">
+  <legend>Informations principales</legend>
+
+  <%= f.input :last_name, autofocus: true %>
+  <%= f.input :first_name %>
+  <%= f.input :address, as: :text %>
+  <%= f.input :email %>
+  <%= f.input :cellphone_number %>
+  <hr/>
+</fieldset>
+
+<%= f.input :relative_cellphone_number %>
+<%= f.input :general_practitioner, as: :text, hint: "Nom / Prénom / Coordonnées" %>
+<%= f.input :covid_general_practitioner, as: :text, hint: "Nom / Prénom" %>
+<%= f.input :gender, as: :select, collection: Patient.enum_filter_collection(:genders) %>
+<%= f.input :birthdate, input_html: {data: {controller: "flatpickr"}} %>
+<%= f.input :is_healthcare_professional, as: :select %>
+<%= f.input :pregnant, as: :select %>
+<%= f.input :home_caregivers, as: :select %>
+<%= f.input :home_caregivers_type, label: "Si OUI, nature des aidants" %>
+<%= f.input :covid_initial_symptom, as: :select, collection: Patient.enum_filter_collection(:covid_initial_symptoms) %>
+<%= f.input :covid_initial_symptoms_diagnosed_on, input_html: {data: {controller: "flatpickr"}} %>
+<%= f.input :covid_initial_symptoms_started_on, input_html: {data: {controller: "flatpickr"}} %>
+<%= f.input :covid_treatment_started_on, input_html: {data: {controller: "flatpickr"}} %>
+<%= f.input :interstitial_alveolus_infiltrates, as: :select %>
+
+<fieldset class="form-group">
+  <legend>Comorbidités (selon CRF ISARIC module 4)</legend>
+
+  <div class="row">
+    <div class="col-sm">
+      <%= f.input :comorbidity_chronic_cardiac_disease, as: :radio_buttons %>
+      <%= f.input :comorbidity_chronic_pulmonary_disease, as: :radio_buttons %>
+      <%= f.input :comorbidity_asthma, as: :radio_buttons %>
+      <%= f.input :comorbidity_chronic_kidney_disease, as: :radio_buttons %>
+      <%= f.input :comorbidity_liver_disease, as: :radio_buttons %>
+      <%= f.input :comorbidity_mild_liver_disease, as: :radio_buttons %>
+      <%= f.input :comorbidity_chronic_neurological_disorder, as: :radio_buttons %>
+      <%= f.input :comorbidity_malignant_neoplasia, as: :radio_buttons %>
+      <%= f.input :comorbidity_chronic_hemathological_disease, as: :radio_buttons %>
+      <%= f.input :comorbidity_hiv, as: :radio_buttons %>
+    </div>
+    <div class="col-sm">
+      <%= f.input :comorbidity_obesity, as: :radio_buttons %>
+      <%= f.input :comorbidity_diabetes_with_complications, as: :radio_buttons %>
+      <%= f.input :comorbidity_diabetes, as: :radio_buttons %>
+      <%= f.input :comorbidity_rheumatologic_disease, as: :radio_buttons %>
+      <%= f.input :comorbidity_dementia, as: :radio_buttons %>
+      <%= f.input :comorbidity_malnutrition, as: :radio_buttons %>
+      <%= f.input :comorbidity_smoking, as: :radio_buttons, collection: Patient.enum_filter_collection(:comorbidity_smokings) %>
+      <%= f.input :comorbidity_other, as: :radio_buttons %>
+      <%= f.input :comorbidity_other_comment, as: :text, label: "Si Oui, lesquels" %>
+    </div>
+  </div>
+  <hr/>
+</fieldset>
+
+<%= f.input :notable_long_term_treatments, as: :text %>
+<%= f.input :sars_cov_2_treatment, as: :select %>
+<%= f.input :sars_cov_2_treatment_name, as: :text, label: "Si Oui, lesquels" %>
+
+<%= f.input :home_follow_up_elligible, as: :select %>
+
+<p>
+  <strong>Critères de suivi à domicile :</strong>
+  <ul>
+    <li>Absence de detresse respiratoire</li>
+    <li>Confinement psychologiquement possible</li>
+    <li>Confinement materiellment possible</li>
+    <li>Absence d’une comorbidité sévere et ou de traiitement immuno suppressseurs</li>
+    <li>Accepte le confinement avec suivi digital à distance</li>
+  </ul>
+</p>

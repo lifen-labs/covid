@@ -2,8 +2,13 @@ class Patient < ApplicationRecord
   validates_presence_of :first_name, :last_name, :cellphone_number, :otp_secret
 
   phony_normalize :cellphone_number, default_country_code: 'FR'
+  phony_normalize :relative_cellphone_number, default_country_code: 'FR'
 
   has_many :standard_surveys, dependent: :destroy
+
+  enum gender: {male: 'male', female: 'female'}, _prefix: true
+  enum covid_initial_symptom: {mild: 'mild', post_severe: 'post_severe', post_critical: 'post_critical'}, _prefix: true
+  enum comorbidity_smoking: {yes: 'yes', never: 'never', former_smoker: 'former_smoker'}, _prefix: true
 
   def to_s
     "#{first_name} #{last_name}"

@@ -1,15 +1,6 @@
-class CreatePatientForm
-  include ActiveModel::Model
-
-  attr_accessor(
-    :first_name,
-    :last_name,
-    :cellphone_number
-  )
+class CreatePatientForm < PatientForm
 
   attr_reader :patient
-
-  validates_presence_of :first_name, :last_name, :cellphone_number
 
   def submit
     return false unless valid?
@@ -28,12 +19,7 @@ class CreatePatientForm
   private
 
     def patient_attributes
-      {
-        first_name: first_name,
-        last_name: last_name,
-        cellphone_number: cellphone_number,
-        otp_secret: ROTP::Base32.random
-      }
+      super.merge!({otp_secret: ROTP::Base32.random})
     end
 
 end

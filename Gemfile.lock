@@ -127,6 +127,7 @@ GEM
       multipart-post (>= 1.2, < 3)
     ffaker (2.13.0)
     ffi (1.12.2)
+    flatpickr (4.5.7.0)
     formatador (0.2.5)
     formtastic (3.1.5)
       actionpack (>= 3.2.13)
@@ -398,6 +399,7 @@ DEPENDENCIES
   devise
   factory_bot_rails
   ffaker
+  flatpickr
   guard-rspec
   jbuilder (~> 2.7)
   listen (>= 3.0.5, < 3.2)
