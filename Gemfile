@@ -58,6 +58,8 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'ffaker'
   gem 'awesome_print'
+  gem 'simplecov', require: false
+  gem 'codecov', require: false
 end
 
 group :development do
