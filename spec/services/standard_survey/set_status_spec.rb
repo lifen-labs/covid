@@ -112,8 +112,10 @@ RSpec.describe StandardSurvey::SetStatus, type: :model do
     end
 
     context 'high variation of breathing_difficulty_borg_scale' do
-      let(:standard_survey)           { create :standard_survey, status: nil, breathing_difficulty_borg_scale: '4' }
-      let!(:previous_standard_survey) { create :standard_survey, :green, patient: standard_survey.patient, breathing_difficulty_borg_scale: '1' }
+      let(:patient)                   { create :patient }
+      let!(:previous_standard_survey) { create :standard_survey, :green, patient: patient, breathing_difficulty_borg_scale: '1' }
+      let(:standard_survey)           { create :standard_survey, patient: patient, status: nil, breathing_difficulty_borg_scale: '4' }
+
 
       it 'sets the correct status' do
         service.call

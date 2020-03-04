@@ -41,4 +41,42 @@ ActiveAdmin.register StandardSurvey do
     link_to 'Remplir le formulaire', standard_survey.temporary_url, target: '_blank'
   end
 
+  sidebar "Informations principales", only: :show do
+    attributes_table_for standard_survey do
+      row(:status) { |standard_survey| status_tag(StandardSurvey.human_enum_name('status', standard_survey.status), class: "standard_survey_status_#{standard_survey.status}") }
+    end
+
+    attributes_table_for standard_survey, :patient, :created_at, :completed_at
+  end
+
+  show title: :to_s do
+    columns do
+      column do
+        panel "Questionnaire précédent" do
+          if standard_survey.previous_completed_standard_survey
+            attributes_table_for standard_survey.previous_completed_standard_survey do
+              row(:status) { |standard_survey| status_tag(StandardSurvey.human_enum_name('status', standard_survey.status), class: "standard_survey_status_#{standard_survey.status}") }
+            end
+
+            attributes_table_for standard_survey.previous_completed_standard_survey, :body_temperature, :cohabitants_recent_change, :breathing_difficulty_borg_scale, :heartbeats_per_minute, :respiratory_rate_in_cycles_per_minute, :recent_faintness, :recent_cold_chill, :agreed_containment, :agreed_containment_comment, :created_at, :completed_at
+          end
+        end
+      end
+      column do
+        panel "Réponses" do
+          attributes_table_for standard_survey, :body_temperature, :cohabitants_recent_change, :breathing_difficulty_borg_scale, :heartbeats_per_minute, :respiratory_rate_in_cycles_per_minute, :recent_faintness, :recent_cold_chill, :agreed_containment, :agreed_containment_comment
+        end
+      end
+    end
+
+    panel "Questionnaires standards du patient" do
+      table_for(standard_survey.patient.standard_surveys.order(created_at: :desc)) do
+        column('') { |standard_survey| standard_survey }
+        column(:status) { |standard_survey| status_tag(StandardSurvey.human_enum_name('status', standard_survey.status), class: "standard_survey_status_#{standard_survey.status}") }
+        column :body_temperature
+        column :created_at
+        column :completed_at
+      end
+    end
+  end
 end

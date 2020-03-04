@@ -66,7 +66,7 @@ class StandardSurvey::SetStatus
     end
 
     def previous_completed_standard_survey
-      standard_survey.patient.standard_surveys.completed.where.not(id: standard_survey.id).order(completed_at: :desc).take
+      standard_survey.previous_completed_standard_survey
     end
 
     def high_breathing_difficulty_borg_scale_variation

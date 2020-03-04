@@ -21,6 +21,10 @@ class StandardSurvey < ApplicationRecord
   scope :completed,       -> { where.not(completed_at: nil)}
   scope :to_complete,     -> { where(completed_at: nil)}
 
+  def to_s
+    "Questionnaire standard - #{patient} - ##{id}"
+  end
+
   def temporary_url
     url_helper.edit_standard_survey_url(id: public_token, otp: patient.generate_otp)
   end
@@ -28,4 +32,9 @@ class StandardSurvey < ApplicationRecord
   def set_status!
     StandardSurvey::SetStatus.call(self)
   end
+
+  def previous_completed_standard_survey
+    @_previous_completed_standard_survey ||= patient.standard_surveys.completed.where("id < ?", id).order(completed_at: :desc).take
+  end
+
 end
