@@ -23,7 +23,8 @@ RSpec.describe SendSms, type: :model do
       body: {
         'Body' => message,
         'From' => twilio_phone_number,
-        'To' => phone_number
+        'To' => phone_number,
+        'StatusCallback' => 'http://localhost:3000/twilio/sms_statuses'
       }
     }
   end

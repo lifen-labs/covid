@@ -1,5 +1,7 @@
 class SendSms
 
+  include UrlHelper
+
   def self.call(phone_number, message)
     new(phone_number).call(message)
   end
@@ -26,7 +28,8 @@ class SendSms
       {
         from: Rails.configuration.twilio_phone_number,
         to: phone_number,
-        body: message
+        body: message,
+        status_callback: url_helper.twilio_sms_statuses_url
       }
     end
 

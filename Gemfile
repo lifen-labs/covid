@@ -46,6 +46,8 @@ gem 'twilio-ruby'
 gem 'sentry-raven'
 gem 'flatpickr'
 
+gem 'slack-notifier'
+
 source 'https://rails-assets.org' do
   gem 'rails-assets-bootstrap', '> 4.1.2'
 end
