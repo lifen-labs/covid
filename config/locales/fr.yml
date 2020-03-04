@@ -33,6 +33,9 @@ fr:
         genders:
           male: "Masculin"
           female: "Féminin"
+        genders_to_text:
+          male: "Mr"
+          female: "mme"
         birthdate: "Date de naissance"
         is_healthcare_professional: "Employé en tant que professionnel de santé ?"
         pregnant: "Enceinte?"

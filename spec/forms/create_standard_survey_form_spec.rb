@@ -28,9 +28,24 @@ RSpec.describe CreateStandardSurveyForm, type: :model do
 
       expect(standard_survey.patient).to eq patient
 
-      sms_message = "http://localhost:3000/standard_surveys/#{standard_survey.public_token}/edit?otp=#{otp}"
+      sms_message = "Bonjour, merci de remplir votre questionnaire de suivi : http://localhost:3000/standard_surveys/#{standard_survey.public_token}/edit?otp=#{otp}"
 
       expect(SendSms).to have_received(:call).with(patient.cellphone_number, sms_message).once
+    end
+
+    context 'with a full attributes patient' do
+      let(:patient) { create :patient, last_name: "Depaulis", gender: "male" }
+
+      it 'creates a StandardSurvey' do
+        form.submit
+
+        standard_survey = form.standard_survey
+
+        sms_message = "Bonjour Mr Depaulis, merci de remplir votre questionnaire de suivi : http://localhost:3000/standard_surveys/#{standard_survey.public_token}/edit?otp=#{otp}"
+
+        expect(SendSms).to have_received(:call).with(patient.cellphone_number, sms_message).once
+      end
+
     end
   end
 

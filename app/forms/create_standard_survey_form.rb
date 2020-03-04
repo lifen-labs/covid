@@ -41,7 +41,16 @@ class CreateStandardSurveyForm
     end
 
     def sms_message
-      standard_survey.temporary_url
+      return default_sms_message if standard_survey.patient.gender.blank? || standard_survey.patient.last_name.blank?
+
+      "Bonjour #{gender_to_text} #{standard_survey.patient.last_name}, merci de remplir votre questionnaire de suivi : #{standard_survey.temporary_url}"
     end
 
+    def gender_to_text
+      I18n.t("activerecord.attributes.patient.genders_to_text.#{standard_survey.patient.gender}")
+    end
+
+    def default_sms_message
+      "Bonjour, merci de remplir votre questionnaire de suivi : #{standard_survey.temporary_url}"
+    end
 end
