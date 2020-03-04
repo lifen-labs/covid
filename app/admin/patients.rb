@@ -100,14 +100,15 @@ ActiveAdmin.register Patient do
   end
 
   show title: :to_s do
-    panel "Questionnaires standards" do
+    panel "Réponses" do
       table_for(patient.standard_surveys.order(created_at: :desc)) do
-        column('') { |standard_survey| standard_survey }
+        column('') { |standard_survey| link_to "voir", admin_standard_survey_path(standard_survey) }
         column(:status) { |standard_survey| status_tag(StandardSurvey.human_enum_name('status', standard_survey.status), class: "standard_survey_status_#{standard_survey.status}") }
         column :body_temperature
         column :breathing_difficulty_borg_scale
         column :created_at
         column :completed_at
+        column :action_comment
       end
     end
 
