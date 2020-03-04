@@ -21,7 +21,6 @@ class StandardSurveysController < ApplicationController
     render :not_found
   end
 
-
   private
 
     def standard_survey

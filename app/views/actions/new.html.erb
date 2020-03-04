@@ -1,0 +1,7 @@
+<%= render layout: '/shared/public_forms_outside_active_admin', locals: {title: "Effectuer une action"} do %>
+  <%= simple_form_for(@form, method: :post, url: actions_path(id: @form.standard_survey.id)) do |f| %>
+    <%= f.input :action_comment, label: "Commentaire", autofocus: true, as: :text %>
+
+    <%= f.button :submit, value: "Action effectuée", data: { disable_with: "Validation en cours ..." }, class: "btn btn-primary" %>
+  <% end %>
+<% end %>

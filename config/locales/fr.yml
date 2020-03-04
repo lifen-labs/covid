@@ -123,6 +123,7 @@ fr:
         recent_cold_chill: "Frisson récent"
         action_needed: "Action nécessaire"
         action_done_at: "Action effectuée le"
+        action_comment: "Action effectuée"
       command_center:
         name: "Intitulé"
         city: "Ville"

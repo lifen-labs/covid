@@ -43,19 +43,11 @@ ActiveAdmin.register StandardSurvey do
   end
 
   action_item(:action_done, only: :show, if: proc { standard_survey.action_needed? && standard_survey.action_not_done_yet? }) do
-    link_to 'Marquer action faite', action_done_admin_standard_survey_path(standard_survey)
-  end
-
-  member_action :action_done, method: :get do
-    standard_survey = StandardSurvey.find(params[:id])
-
-    standard_survey.update!(action_done_at: DateTime.current)
-
-    redirect_to admin_standard_survey_path(standard_survey), notice: 'Action effectuée'
+    link_to 'Marquer action faite', new_action_path(standard_survey)
   end
 
   sidebar "Informations principales", only: :show do
-    attributes_table_for standard_survey, :patient, :created_at, :completed_at, :action_needed, :action_done_at
+    attributes_table_for standard_survey, :patient, :created_at, :completed_at, :action_needed, :action_done_at, :action_comment
   end
 
   show title: :to_s do
