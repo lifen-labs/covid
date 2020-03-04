@@ -11,6 +11,12 @@ class Patient < ApplicationRecord
   enum covid_initial_symptom: {mild: 'mild', post_severe: 'post_severe', post_critical: 'post_critical'}, _prefix: true
   enum comorbidity_smoking: {yes: 'yes', never: 'never', former_smoker: 'former_smoker'}, _prefix: true
 
+  scope :green,                              -> { where(latest_standard_survey_status: ::StandardSurvey::STATUS_GREEN)}
+  scope :yellow,                             -> { where(latest_standard_survey_status: ::StandardSurvey::STATUS_YELLOW)}
+  scope :orange,                             -> { where(latest_standard_survey_status: ::StandardSurvey::STATUS_ORANGE)}
+  scope :red,                                -> { where(latest_standard_survey_status: ::StandardSurvey::STATUS_RED)}
+  scope :without_completed_standard_survey,  -> { where(latest_standard_survey_status: nil)}
+
   def to_s
     return "Patient ##{id}" if first_name.blank? && last_name.blank?
 
