@@ -41,16 +41,11 @@ class CreateStandardSurveyForm
     end
 
     def sms_message
-      return default_sms_message if standard_survey.patient.gender.blank? || standard_survey.patient.last_name.blank?
-
-      "Bonjour #{gender_to_text} #{standard_survey.patient.last_name}, merci de remplir votre questionnaire de suivi : #{standard_survey.temporary_url}"
+      "Vous êtes inscrits sur la plateforme pour la surveillance à domicile des patients infectés par le coronavirus Covid-19. Merci de compléter le questionnaire pour évaluer l’évolution de vos symptômes. Toutes les réponses seront analysées par des équipes médicales. En cas de problème, contactez le #{command_center.phone_number}.\n#{standard_survey.temporary_url}"
     end
 
-    def gender_to_text
-      I18n.t("activerecord.attributes.patient.genders_to_text.#{standard_survey.patient.gender}")
+    def command_center
+      standard_survey.patient.command_center || CommandCenter.first
     end
 
-    def default_sms_message
-      "Bonjour, merci de remplir votre questionnaire de suivi : #{standard_survey.temporary_url}"
-    end
 end
