@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'creating a Patient', type: :feature do
+RSpec.describe 'updating a Patient', type: :feature do
   let(:patient)                                         { create :patient }
   let(:other_patient)                                   { build_stubbed :patient }
 

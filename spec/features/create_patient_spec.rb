@@ -27,6 +27,8 @@ RSpec.describe 'creating a Patient', type: :feature do
   let(:sars_cov_2_treatment_name)                       { patient.sars_cov_2_treatment_name }
   let(:home_follow_up_elligible)                        { patient.home_follow_up_elligible }
 
+  let(:comorbidity_smoking)                             { patient.comorbidity_smoking }
+
   let!(:command_center)                                 { create :command_center }
   let!(:other_command_center)                           { create :command_center }
 
@@ -39,17 +41,45 @@ RSpec.describe 'creating a Patient', type: :feature do
       end
 
       context 'with valid attributes' do
-        it 'creates the Patient', js: true do
+        xit 'creates the Patient', js: true do
           visit new_patient_path
+
+          select command_center.name, from: :create_patient_form_command_center_id
 
           fill_in :create_patient_form_cellphone_number, with: cellphone_number
           fill_in :create_patient_form_first_name, with: first_name
           fill_in :create_patient_form_last_name, with: last_name
+          select "Masculin", from: :create_patient_form_gender
+          fill_in :create_patient_form_birthdate, with: birthdate #TODO: fix fucking JS
+          select "Non", from: :create_patient_form_pregnant
 
-          select command_center.name, from: :create_patient_form_command_center_id
+          choose(:create_patient_form_comorbidity_chronic_cardiac_disease_false)
+          choose(:create_patient_form_comorbidity_chronic_pulmonary_disease_false)
+          choose(:create_patient_form_comorbidity_asthma_false)
+          choose(:create_patient_form_comorbidity_chronic_kidney_disease_false)
+          choose(:create_patient_form_comorbidity_liver_disease_false)
+          choose(:create_patient_form_comorbidity_mild_liver_disease_false)
+          choose(:create_patient_form_comorbidity_chronic_neurological_disorder_false)
+          choose(:create_patient_form_comorbidity_malignant_neoplasia_false)
+          choose(:create_patient_form_comorbidity_malnutrition_false)
+          choose(:create_patient_form_comorbidity_chronic_hemathological_disease_false)
+          choose(:create_patient_form_comorbidity_hiv_false)
+          choose(:create_patient_form_comorbidity_obesity_false)
+          choose(:create_patient_form_comorbidity_diabetes_with_complications_false)
+          choose(:create_patient_form_comorbidity_diabetes_false)
+          choose(:create_patient_form_comorbidity_rheumatologic_disease_false)
+          choose(:create_patient_form_comorbidity_dementia_false)
+          choose(:create_patient_form_comorbidity_smoking_yes)
+
+          fill_in :create_patient_form_covid_initial_symptoms_started_on, with: covid_initial_symptoms_started_on #TODO: fix fucking JS
+
+          select "Non", from: :create_patient_form_interstitial_alveolus_infiltrates
+          select "Non", from: :create_patient_form_sars_cov_2_treatment
+          select "Non", from: :create_patient_form_home_caregivers
 
           expect {
             click_on 'Créer'
+            save_and_open_page
           }.to change(Patient, :count).by(1)
 
           patient = Patient.last

@@ -17,38 +17,39 @@ RSpec.describe CreatePatientForm, type: :model do
   let(:gender)                                          { patient.gender }
   let(:birthdate)                                       { patient.birthdate }
   let(:is_healthcare_professional)                      { patient.is_healthcare_professional }
-  let(:pregnant)                                        { patient.pregnant }
-  let(:home_caregivers)                                 { patient.home_caregivers }
+  let(:pregnant)                                        { patient.pregnant.to_s }
+  let(:pregnant_since_in_weeks)                         { patient.pregnant_since_in_weeks }
+  let(:home_caregivers)                                 { patient.home_caregivers.to_s }
   let(:home_caregivers_type)                            { patient.home_caregivers_type }
-  let(:covid_initial_symptom)                           { patient.covid_initial_symptom }
+  let(:covid_initial_symptom)                           { patient.covid_initial_symptom.to_s }
   let(:covid_initial_symptoms_diagnosed_on)             { patient.covid_initial_symptoms_diagnosed_on }
   let(:covid_initial_symptoms_started_on)               { patient.covid_initial_symptoms_started_on }
   let(:covid_treatment_started_on)                      { patient.covid_treatment_started_on }
-  let(:interstitial_alveolus_infiltrates)               { patient.interstitial_alveolus_infiltrates }
-  let(:notable_long_term_treatments)                    { patient.notable_long_term_treatments }
-  let(:sars_cov_2_treatment)                            { patient.sars_cov_2_treatment }
+  let(:interstitial_alveolus_infiltrates)               { patient.interstitial_alveolus_infiltrates.to_s }
+  let(:notable_long_term_treatments)                    { patient.notable_long_term_treatments.to_s }
+  let(:sars_cov_2_treatment)                            { patient.sars_cov_2_treatment.to_s }
   let(:sars_cov_2_treatment_name)                       { patient.sars_cov_2_treatment_name }
-  let(:home_follow_up_elligible)                        { patient.home_follow_up_elligible }
+  let(:home_follow_up_elligible)                        { patient.home_follow_up_elligible.to_s }
 
-  let(:comorbidity_chronic_cardiac_disease)             { patient.comorbidity_chronic_cardiac_disease }
-  let(:comorbidity_chronic_pulmonary_disease)           { patient.comorbidity_chronic_pulmonary_disease }
-  let(:comorbidity_asthma)                              { patient.comorbidity_asthma }
-  let(:comorbidity_chronic_kidney_disease)              { patient.comorbidity_chronic_kidney_disease }
-  let(:comorbidity_liver_disease)                       { patient.comorbidity_liver_disease }
-  let(:comorbidity_mild_liver_disease)                  { patient.comorbidity_mild_liver_disease }
-  let(:comorbidity_chronic_neurological_disorder)       { patient.comorbidity_chronic_neurological_disorder }
-  let(:comorbidity_malignant_neoplasia)                 { patient.comorbidity_malignant_neoplasia }
-  let(:comorbidity_chronic_hemathological_disease)      { patient.comorbidity_chronic_hemathological_disease }
-  let(:comorbidity_hiv)                                 { patient.comorbidity_hiv }
-  let(:comorbidity_obesity)                             { patient.comorbidity_obesity }
-  let(:comorbidity_diabetes_with_complications)         { patient.comorbidity_diabetes_with_complications }
-  let(:comorbidity_diabetes)                            { patient.comorbidity_diabetes }
-  let(:comorbidity_rheumatologic_disease)               { patient.comorbidity_rheumatologic_disease }
-  let(:comorbidity_dementia)                            { patient.comorbidity_dementia }
-  let(:comorbidity_malnutrition)                        { patient.comorbidity_malnutrition }
-  let(:comorbidity_smoking)                             { patient.comorbidity_smoking }
-  let(:comorbidity_other)                               { patient.comorbidity_other }
-  let(:comorbidity_other_comment)                       { patient.comorbidity_other_comment }
+  let(:comorbidity_chronic_cardiac_disease)             { patient.comorbidity_chronic_cardiac_disease.to_s }
+  let(:comorbidity_chronic_pulmonary_disease)           { patient.comorbidity_chronic_pulmonary_disease.to_s }
+  let(:comorbidity_asthma)                              { patient.comorbidity_asthma.to_s }
+  let(:comorbidity_chronic_kidney_disease)              { patient.comorbidity_chronic_kidney_disease.to_s }
+  let(:comorbidity_liver_disease)                       { patient.comorbidity_liver_disease.to_s }
+  let(:comorbidity_mild_liver_disease)                  { patient.comorbidity_mild_liver_disease.to_s }
+  let(:comorbidity_chronic_neurological_disorder)       { patient.comorbidity_chronic_neurological_disorder.to_s }
+  let(:comorbidity_malignant_neoplasia)                 { patient.comorbidity_malignant_neoplasia.to_s }
+  let(:comorbidity_chronic_hemathological_disease)      { patient.comorbidity_chronic_hemathological_disease.to_s }
+  let(:comorbidity_hiv)                                 { patient.comorbidity_hiv.to_s }
+  let(:comorbidity_obesity)                             { patient.comorbidity_obesity.to_s }
+  let(:comorbidity_diabetes_with_complications)         { patient.comorbidity_diabetes_with_complications.to_s }
+  let(:comorbidity_diabetes)                            { patient.comorbidity_diabetes.to_s }
+  let(:comorbidity_rheumatologic_disease)               { patient.comorbidity_rheumatologic_disease.to_s }
+  let(:comorbidity_dementia)                            { patient.comorbidity_dementia.to_s }
+  let(:comorbidity_malnutrition)                        { patient.comorbidity_malnutrition.to_s }
+  let(:comorbidity_smoking)                             { patient.comorbidity_smoking.to_s }
+  let(:comorbidity_other)                               { patient.comorbidity_other.to_s }
+  let(:comorbidity_other_comment)                       { patient.comorbidity_other_comment.to_s }
 
   let(:attributes) do
     {
@@ -64,6 +65,7 @@ RSpec.describe CreatePatientForm, type: :model do
       birthdate: birthdate,
       is_healthcare_professional: is_healthcare_professional,
       pregnant: pregnant,
+      pregnant_since_in_weeks: pregnant_since_in_weeks,
       home_caregivers: home_caregivers,
       home_caregivers_type: home_caregivers_type,
       covid_initial_symptom: covid_initial_symptom,
@@ -104,6 +106,7 @@ RSpec.describe CreatePatientForm, type: :model do
     it 'creates a Patient' do
       expect {
         form.submit
+        ap form.errors.messages
       }.to change(Patient, :count).by(1)
 
       patient = form.patient

@@ -1,4 +1,4 @@
-<%= render layout: '/shared/forms_outside_active_admin', locals: {back_button_path: admin_patients_path, title: "Créer un patient"} do %>
+<%= render layout: '/shared/forms_outside_active_admin', locals: {back_button_path: admin_patients_path, title: "Inclure un nouveau patient dans le suivi à domicile"} do %>
   <%= simple_form_for(@form, method: :post, url: patients_path) do |f| %>
 
     <%= render 'form_attributes', f: f %>

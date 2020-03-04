@@ -63,6 +63,7 @@ group :development, :test do
   gem 'awesome_print'
   gem 'simplecov', require: false
   gem 'codecov', require: false
+  gem 'launchy'
 end
 
 group :development do

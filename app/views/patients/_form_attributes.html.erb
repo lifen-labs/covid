@@ -1,32 +1,33 @@
+<%= f.input :covid_general_practitioner, as: :text, hint: "Nom / Prénom" %>
+<%= f.input :command_center_id, label: "Centre", collection: CommandCenter.all.order(name: :asc), include_blank: false %>
+
 <fieldset class="form-group">
-  <legend>Informations principales</legend>
+  <legend>Informations de contact</legend>
 
   <%= f.input :last_name, autofocus: true %>
   <%= f.input :first_name %>
   <%= f.input :address, as: :text %>
-  <%= f.input :email %>
-  <%= f.input :cellphone_number %>
+  <%= f.input :cellphone_number, label: "Numéro de téléphone mobile" %>
+  <%= f.input :email, label: "Email du patient" %>
+  <%= f.input :relative_cellphone_number %>
+  <%= f.input :general_practitioner, as: :text, hint: "Nom / Prénom / Coordonnées" %>
   <hr/>
 </fieldset>
 
-<%= f.input :relative_cellphone_number %>
-<%= f.input :general_practitioner, as: :text, hint: "Nom / Prénom / Coordonnées" %>
-<%= f.input :covid_general_practitioner, as: :text, hint: "Nom / Prénom" %>
-<%= f.input :command_center_id, label: "Centre", collection: CommandCenter.all.order(name: :asc), include_blank: false %>
-<%= f.input :gender, as: :select, collection: Patient.enum_filter_collection(:genders) %>
-<%= f.input :birthdate, input_html: {data: {controller: "flatpickr"}} %>
-<%= f.input :is_healthcare_professional, as: :select %>
-<%= f.input :pregnant, as: :select %>
-<%= f.input :home_caregivers, as: :select %>
-<%= f.input :home_caregivers_type, label: "Si OUI, nature des aidants" %>
-<%= f.input :covid_initial_symptom, as: :select, collection: Patient.enum_filter_collection(:covid_initial_symptoms) %>
-<%= f.input :covid_initial_symptoms_diagnosed_on, input_html: {data: {controller: "flatpickr"}} %>
-<%= f.input :covid_initial_symptoms_started_on, input_html: {data: {controller: "flatpickr"}} %>
-<%= f.input :covid_treatment_started_on, input_html: {data: {controller: "flatpickr"}} %>
-<%= f.input :interstitial_alveolus_infiltrates, as: :select %>
+<fieldset class="form-group">
+  <legend>Informations sur le patient</legend>
+
+  <%= f.input :gender, as: :select, collection: Patient.enum_filter_collection(:genders) %>
+  <%= f.input :birthdate, input_html: {data: {controller: "flatpickr"}} %>
+  <%= f.input :is_healthcare_professional, as: :select %>
+  <%= f.input :pregnant, as: :select %>
+  <%= f.input :pregnant_since_in_weeks, label: "Si Oui, précisez le terme en nombre semaines d'aménorrhée", hint: "semaines", as: :integer %>
+  <%= f.input :notable_long_term_treatments, as: :text %>
+  <hr/>
+</fieldset>
 
 <fieldset class="form-group">
-  <legend>Comorbidités (selon CRF ISARIC module 4)</legend>
+  <legend>Comorbidités</legend>
 
   <div class="row">
     <div class="col-sm">
@@ -56,19 +57,28 @@
   <hr/>
 </fieldset>
 
-<%= f.input :notable_long_term_treatments, as: :text %>
-<%= f.input :sars_cov_2_treatment, as: :select %>
-<%= f.input :sars_cov_2_treatment_name, as: :text, label: "Si Oui, lesquels" %>
-
-<%= f.input :home_follow_up_elligible, as: :select %>
+<fieldset class="form-group">
+  <legend>Informations sur l’infection Covid-19</legend>
+  <%= f.input :covid_initial_symptom, as: :select, collection: Patient.enum_filter_collection(:covid_initial_symptoms) %>
+  <%= f.input :covid_initial_symptoms_diagnosed_on, input_html: {data: {controller: "flatpickr"}} %>
+  <%= f.input :covid_initial_symptoms_started_on, input_html: {data: {controller: "flatpickr"}} %>
+  <%= f.input :covid_treatment_started_on, input_html: {data: {controller: "flatpickr"}} %>
+  <%= f.input :interstitial_alveolus_infiltrates, as: :select %>
+  <%= f.input :home_caregivers, label: "Présence de personnes dans le même logement / au domicile", as: :select %>
+  <%= f.input :home_caregivers_type, label: "Si Oui, précisez (femme, enfant, proche, etc...)" %>
+  <%= f.input :sars_cov_2_treatment, as: :select %>
+  <%= f.input :sars_cov_2_treatment_name, as: :text, label: "Si Oui, lesquels" %>
+  <hr/>
+</fieldset>
 
 <p>
-  <strong>Critères de suivi à domicile :</strong>
+  <strong>Répond aux critères de suivi à domicile :</strong>
   <ul>
     <li>Absence de detresse respiratoire</li>
     <li>Confinement psychologiquement possible</li>
-    <li>Confinement materiellment possible</li>
-    <li>Absence d’une comorbidité sévere et ou de traiitement immuno suppressseurs</li>
+    <li>Confinement matériellement possible</li>
     <li>Accepte le confinement avec suivi digital à distance</li>
   </ul>
 </p>
+
+<%= f.input :home_follow_up_elligible, as: :select %>
