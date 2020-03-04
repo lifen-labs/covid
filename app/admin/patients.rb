@@ -3,21 +3,23 @@ ActiveAdmin.register Patient do
 
   controller do
     def scoped_collection
-      super.includes :command_center
+      super.includes(:command_center)
     end
   end
 
   index do
-    id_column
+    column(:latest_standard_survey_status) { |patient| status_tag(StandardSurvey.human_enum_name('status', patient.latest_standard_survey_status), class: "standard_survey_status_#{patient.latest_standard_survey_status}") }
+    column("Comorbidité ?") {|p| status_tag(p.comorbibity?) }
     column :command_center
-    column :first_name
-    column :last_name
+    column(:first_name) {|p| link_to p.first_name, p}
+    column(:last_name) {|p| link_to p.last_name, p}
     column :cellphone_number
     column :created_at
     actions
   end
 
   filter :command_center
+  filter :latest_standard_survey_status, as: :select, collection: StandardSurvey.enum_filter_collection('status')
   filter :first_name
   filter :last_name
   filter :cellphone_number
@@ -96,6 +98,7 @@ ActiveAdmin.register Patient do
         column('') { |standard_survey| standard_survey }
         column(:status) { |standard_survey| status_tag(StandardSurvey.human_enum_name('status', standard_survey.status), class: "standard_survey_status_#{standard_survey.status}") }
         column :body_temperature
+        column :breathing_difficulty_borg_scale
         column :created_at
         column :completed_at
       end

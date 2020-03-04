@@ -21,7 +21,6 @@ class Patient < ApplicationRecord
     to_s
   end
 
-
   def otp_service
     @_otp_service ||= ROTP::TOTP.new(otp_secret, issuer: 'Authentication service')
   end
@@ -42,6 +41,29 @@ class Patient < ApplicationRecord
 
   def last_standard_survey
     @_last_standard_survey ||= standard_surveys.order(created_at: :desc).take
+  end
+
+  def comorbibity?
+    [
+      comorbidity_chronic_cardiac_disease?,
+      comorbidity_chronic_pulmonary_disease?,
+      comorbidity_asthma?,
+      comorbidity_chronic_kidney_disease?,
+      comorbidity_liver_disease?,
+      comorbidity_mild_liver_disease?,
+      comorbidity_chronic_neurological_disorder?,
+      comorbidity_malignant_neoplasia?,
+      comorbidity_chronic_hemathological_disease?,
+      comorbidity_hiv?,
+      comorbidity_obesity?,
+      comorbidity_diabetes_with_complications?,
+      comorbidity_diabetes?,
+      comorbidity_rheumatologic_disease?,
+      comorbidity_dementia?,
+      comorbidity_malnutrition?,
+      comorbidity_smoking == "yes",
+      comorbidity_other?,
+    ].any?
   end
 
 end

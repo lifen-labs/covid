@@ -81,6 +81,7 @@ fr:
         command_center: "Centre"
         command_center_id: "Centre (ID)"
         survey_periodicity_in_hours: "Périodicité d'envoi du questionaire (heures)"
+        latest_standard_survey_status: "Statut"
       standard_survey: &standard_survey
         patient: "Patient"
         patient_id: "Patient (ID)"

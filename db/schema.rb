@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_04_104423) do
+ActiveRecord::Schema.define(version: 2020_03_04_115258) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -84,6 +84,7 @@ ActiveRecord::Schema.define(version: 2020_03_04_104423) do
     t.text "comorbidity_other_comment"
     t.bigint "command_center_id"
     t.integer "pregnant_since_in_weeks"
+    t.string "latest_standard_survey_status"
     t.index ["command_center_id"], name: "index_patients_on_command_center_id"
     t.index ["otp_secret"], name: "index_patients_on_otp_secret", unique: true
   end

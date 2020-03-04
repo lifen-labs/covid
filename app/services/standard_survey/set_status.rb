@@ -19,8 +19,14 @@ class StandardSurvey::SetStatus
 
   private
 
+    def set_patient_latest_standard_survey_status
+      standard_survey.patient.update!(latest_standard_survey_status: standard_survey.status)
+    end
+
+
     def set_default_status
       standard_survey.update!(status: ::StandardSurvey::STATUS_YELLOW)
+      set_patient_latest_standard_survey_status
     end
 
     def red_status?
@@ -33,6 +39,7 @@ class StandardSurvey::SetStatus
 
     def set_red_status
       standard_survey.update!(status: ::StandardSurvey::STATUS_RED)
+      set_patient_latest_standard_survey_status
       action_needed!
     end
 
@@ -48,6 +55,7 @@ class StandardSurvey::SetStatus
 
     def set_orange_status
       standard_survey.update!(status: ::StandardSurvey::STATUS_ORANGE)
+      set_patient_latest_standard_survey_status
       action_needed!
     end
 
@@ -66,6 +74,7 @@ class StandardSurvey::SetStatus
 
     def set_green_status
       standard_survey.update!(status: ::StandardSurvey::STATUS_GREEN)
+      set_patient_latest_standard_survey_status
     end
 
     def previous_completed_standard_survey

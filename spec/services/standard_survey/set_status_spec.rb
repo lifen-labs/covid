@@ -14,6 +14,7 @@ RSpec.describe StandardSurvey::SetStatus, type: :model do
 
       expect(standard_survey.status).to eq StandardSurvey::STATUS_GREEN
       expect(standard_survey).to_not be_action_needed
+      expect(standard_survey.patient.latest_standard_survey_status).to eq StandardSurvey::STATUS_GREEN
     end
   end
 
@@ -27,6 +28,7 @@ RSpec.describe StandardSurvey::SetStatus, type: :model do
 
       expect(standard_survey.status).to eq StandardSurvey::STATUS_ORANGE
       expect(standard_survey).to be_action_needed
+      expect(standard_survey.patient.latest_standard_survey_status).to eq StandardSurvey::STATUS_ORANGE
     end
 
     context 'high body_temperature' do
@@ -116,6 +118,7 @@ RSpec.describe StandardSurvey::SetStatus, type: :model do
 
         expect(standard_survey.status).to eq StandardSurvey::STATUS_RED
         expect(standard_survey).to be_action_needed
+        expect(standard_survey.patient.latest_standard_survey_status).to eq StandardSurvey::STATUS_RED
       end
     end
 
