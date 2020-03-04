@@ -18,8 +18,8 @@ ActiveAdmin.register Patient do
     column(:latest_standard_survey_status) { |patient| status_tag(StandardSurvey.human_enum_name('status', patient.latest_standard_survey_status), class: "standard_survey_status_#{patient.latest_standard_survey_status}") }
     column("Comorbidité ?") {|p| status_tag(p.comorbibity?) }
     column :command_center
-    column(:first_name) {|p| link_to p.first_name, p}
-    column(:last_name) {|p| link_to p.last_name, p}
+    column(:first_name) {|p| link_to p.first_name, admin_patient_path(p)}
+    column(:last_name) {|p| link_to p.last_name, admin_patient_path(p)}
     column :cellphone_number
     column :created_at
     actions
