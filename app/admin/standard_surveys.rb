@@ -9,12 +9,7 @@ ActiveAdmin.register StandardSurvey do
 
   scope "Actions à faire", :action_needed, default: true
   scope "Non répondants à relancer", :action_needed_due_to_lack_of_response
-  scope "Actions réalisées", :action_done
-  scope "Complétés", :completed
-  scope "A compléter",:to_complete
-  scope "Vert", :green
-  scope "Jaune", :yellow
-  scope "Orange", :orange
+  scope "Tout", :all
   scope "Rouge", :red
 
   index do

@@ -1,5 +1,6 @@
-<%= f.input :covid_general_practitioner, as: :text, hint: "Nom / Prénom" %>
 <%= f.input :command_center_id, label: "Centre", collection: CommandCenter.all.order(name: :asc), include_blank: false %>
+<%= f.input :covid_general_practitioner, as: :text, hint: "Nom / Prénom" %>
+
 
 <fieldset class="form-group">
   <legend>Informations de contact</legend>
@@ -60,14 +61,14 @@
 <fieldset class="form-group">
   <legend>Informations sur l’infection Covid-19</legend>
   <%= f.input :covid_initial_symptom, as: :select, collection: Patient.enum_filter_collection(:covid_initial_symptoms) %>
-  <%= f.input :covid_initial_symptoms_diagnosed_on, input_html: {data: {controller: "flatpickr"}} %>
   <%= f.input :covid_initial_symptoms_started_on, input_html: {data: {controller: "flatpickr"}} %>
+  <%= f.input :covid_initial_symptoms_diagnosed_on, input_html: {data: {controller: "flatpickr"}} %>
+  <%= f.input :interstitial_alveolus_infiltrates, label: "Si il y eu une imagerie pulmonaire, y-avait-il des infiltrats alvéolo interstitiel", hint: "laissez vide si pas d'imagerie réalisée", as: :select %>
+  <%= f.input :sars_cov_2_treatment, as: :select %>
+  <%= f.input :sars_cov_2_treatment_name, as: :text, label: "Si Oui, lequel" %>
   <%= f.input :covid_treatment_started_on, input_html: {data: {controller: "flatpickr"}} %>
-  <%= f.input :interstitial_alveolus_infiltrates, as: :select %>
   <%= f.input :home_caregivers, label: "Présence de personnes dans le même logement / au domicile", as: :select %>
   <%= f.input :home_caregivers_type, label: "Si Oui, précisez (femme, enfant, proche, etc...)" %>
-  <%= f.input :sars_cov_2_treatment, as: :select %>
-  <%= f.input :sars_cov_2_treatment_name, as: :text, label: "Si Oui, lesquels" %>
   <hr/>
 </fieldset>
 

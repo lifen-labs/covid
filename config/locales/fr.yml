@@ -14,8 +14,8 @@ fr:
         one: "Patient"
         other: "Patients"
       standard_survey:
-        one: "Questionnaire standard"
-        other: "Questionnaires standards"
+        one: "Réponse"
+        other: "Réponses"
       command_center:
         one: "Centre"
         other: "Centres"
@@ -138,9 +138,6 @@ fr:
         <<: *patient
       update_standard_survey_form:
         <<: *standard_survey
-      required:
-        text: "obligatoire"
-        mark: ""
   date:
     formats:
       datepicker: "%d/%m/%Y"

@@ -6,9 +6,6 @@ fr:
       html: '<span class="required">*</span>'
     error_notification:
       default_message: "Please review the problems below:"
-    required:
-      text: 'required'
-      mark: ''
     # Examples
     # labels:
     #   defaults:

@@ -27,7 +27,7 @@ class StandardSurvey < ApplicationRecord
 
 
   def to_s
-    "Questionnaire standard - #{patient} - ##{id}"
+    "Réponse - #{patient} - ##{id}"
   end
 
   def temporary_url

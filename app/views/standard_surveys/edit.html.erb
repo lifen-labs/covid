@@ -1,17 +1,22 @@
 <%= render layout: '/shared/public_forms_outside_active_admin', locals: {title: "Questionnaire de suivi à domicile - Coronavirus Covid 19"} do %>
-  <p>
+  <div class="alert alert-info" role="alert">
     Ce court questionnaire permet de suivre l’évolution de vos symptômes. Toutes les données sont revues par des équipes soignantes. Ce questionnaire sera répété régulièrement.
     <br/>
-    En cas d’urgence, vous pouvez contacter l’équipe médicale via le +33 7 57 91 69 11 ou le SAMU centre 15.
-  </p>
+    <br/>
+    <strong>En cas d’urgence, vous pouvez contacter l’équipe médicale via le +33 7 57 91 69 11 ou le SAMU centre 15.</strong>
+  </div>
+
+  <hr/>
 
   <%= simple_form_for(@form, method: :patch, url: standard_survey_path(id: @form.standard_survey.public_token)) do |f| %>
     <%= f.input :otp, as: :hidden %>
 
     <%= f.input :cohabitants_recent_change, autofocus: true, label: "Depuis le dernier questionnaire, y-a-t-il eu un changement parmi les gens présents à votre domicile pendant le confinement ?", as: :radio_buttons %>
     <%= f.input :body_temperature, as: :float, label: "Prenez votre température", hint: "°C" %>
+    <p><a href="https://www.ameli.fr/assure/sante/bons-gestes/petits-soins/prendre-temperature" target="_blank">Comment prendre sa température ?</a></p>
     <%= f.input :breathing_difficulty_borg_scale, label: "Cochez la case décrivant le mieux votre gêne respiratoire (sensation d’étouffement, dyspnée)", as: :select, include_blank: false, collection: StandardSurvey.enum_filter_collection(:breathing_difficulty_borg_scales) %>
     <%= f.input :heartbeats_per_minute, as: :integer, label: "Mesurez votre fréquence cardiaque", hint: "/minute" %>
+    <p><a href="https://fr.wikihow.com/mesurer-votre-pouls" target="_blank">Comment mesurer sa fréquence cardiaque ?</a></p>
     <%= f.input :respiratory_rate_in_cycles_per_minute, as: :integer, label: "Mesurez votre fréquence respiratoire", hint: "cycles/minutes" %>
     <%= f.input :recent_cold_chill, as: :radio_buttons, label: "Depuis que vous avez rempli le dernier questionnaire, avez-vous eu des frissons ?", hint: "Un frisson est une sensation de froid accompagnée de tremblements." %>
     <%= f.input :recent_chest_pain, label: "Depuis que vous avez rempli le dernier questionnaire, avez-vous eu une douleur thoracique ?", as: :radio_buttons %>
