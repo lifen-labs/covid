@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_04_095719) do
+ActiveRecord::Schema.define(version: 2020_03_04_104423) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -99,7 +99,7 @@ ActiveRecord::Schema.define(version: 2020_03_04_095719) do
     t.integer "breathing_difficulty"
     t.float "breathing_difficulty_borg_scale"
     t.integer "heartbeats_per_minute"
-    t.boolean "recent_faintness"
+    t.boolean "recent_chest_pain"
     t.boolean "agreed_containment"
     t.text "agreed_containment_comment"
     t.integer "respiratory_rate_in_cycles_per_minute"

@@ -106,7 +106,6 @@ RSpec.describe CreatePatientForm, type: :model do
     it 'creates a Patient' do
       expect {
         form.submit
-        ap form.errors.messages
       }.to change(Patient, :count).by(1)
 
       patient = form.patient

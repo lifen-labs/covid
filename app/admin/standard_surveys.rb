@@ -36,7 +36,7 @@ ActiveAdmin.register StandardSurvey do
   filter :cohabitants_recent_change
   filter :breathing_difficulty_borg_scale
   filter :heartbeats_per_minute
-  filter :recent_faintness
+  filter :recent_chest_pain
   filter :agreed_containment
   filter :respiratory_rate_in_cycles_per_minute
   filter :recent_cold_chill
@@ -72,7 +72,7 @@ ActiveAdmin.register StandardSurvey do
               row(:status) { |standard_survey| status_tag(StandardSurvey.human_enum_name('status', standard_survey.status), class: "standard_survey_status_#{standard_survey.status}") }
             end
 
-            attributes_table_for standard_survey.previous_completed_standard_survey, :body_temperature, :cohabitants_recent_change, :breathing_difficulty_borg_scale, :heartbeats_per_minute, :respiratory_rate_in_cycles_per_minute, :recent_faintness, :recent_cold_chill, :agreed_containment, :agreed_containment_comment, :created_at, :completed_at
+            attributes_table_for standard_survey.previous_completed_standard_survey, :body_temperature, :cohabitants_recent_change, :breathing_difficulty_borg_scale, :heartbeats_per_minute, :respiratory_rate_in_cycles_per_minute, :recent_chest_pain, :recent_cold_chill, :agreed_containment, :agreed_containment_comment, :created_at, :completed_at
           end
         end
       end
@@ -82,7 +82,7 @@ ActiveAdmin.register StandardSurvey do
             row(:status) { |standard_survey| status_tag(StandardSurvey.human_enum_name('status', standard_survey.status), class: "standard_survey_status_#{standard_survey.status}") }
           end
 
-          attributes_table_for standard_survey, :body_temperature, :cohabitants_recent_change, :breathing_difficulty_borg_scale, :heartbeats_per_minute, :respiratory_rate_in_cycles_per_minute, :recent_faintness, :recent_cold_chill, :agreed_containment, :agreed_containment_comment
+          attributes_table_for standard_survey, :body_temperature, :cohabitants_recent_change, :breathing_difficulty_borg_scale, :heartbeats_per_minute, :respiratory_rate_in_cycles_per_minute, :recent_chest_pain, :recent_cold_chill, :agreed_containment, :agreed_containment_comment
         end
       end
     end

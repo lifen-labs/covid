@@ -1,4 +1,10 @@
-<%= render layout: '/shared/public_forms_outside_active_admin', locals: {title: "Questionnaire récurrent"} do %>
+<%= render layout: '/shared/public_forms_outside_active_admin', locals: {title: "Questionnaire de suivi à domicile - Coronavirus Covid 19"} do %>
+  <p>
+    Ce court questionnaire permet de suivre l’évolution de vos symptômes. Toutes les données sont revues par des équipes soignantes. Ce questionnaire sera répété régulièrement.
+    <br/>
+    En cas d’urgence, vous pouvez contacter l’équipe médicale via le +33 7 57 91 69 11 ou le SAMU centre 15.
+  </p>
+
   <%= simple_form_for(@form, method: :patch, url: standard_survey_path(id: @form.standard_survey.public_token)) do |f| %>
     <%= f.input :otp, as: :hidden %>
 
@@ -8,7 +14,7 @@
     <%= f.input :heartbeats_per_minute, as: :integer, label: "Mesurez votre fréquence cardiaque", hint: "/minute" %>
     <%= f.input :respiratory_rate_in_cycles_per_minute, as: :integer, label: "Mesurez votre fréquence respiratoire", hint: "cycles/minutes" %>
     <%= f.input :recent_cold_chill, as: :radio_buttons, label: "Depuis que vous avez rempli le dernier questionnaire, avez-vous eu des frissons ?", hint: "Un frisson est une sensation de froid accompagnée de tremblements." %>
-    <%= f.input :recent_faintness, label: "Depuis que vous avez rempli le dernier questionnaire, avez-vous fait un malaise ?", as: :radio_buttons %>
+    <%= f.input :recent_chest_pain, label: "Depuis que vous avez rempli le dernier questionnaire, avez-vous eu une douleur thoracique ?", as: :radio_buttons %>
     <%= f.input :agreed_containment, label: "Vous sentez vous capable de continuer à respecter les conditions de confinement ?", as: :radio_buttons %>
     <%= f.input :agreed_containment_comment, label: "Si Non, pourquoi ?", as: :text, hint: "optionnel" %>
 

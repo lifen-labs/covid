@@ -119,6 +119,19 @@ RSpec.describe StandardSurvey::SetStatus, type: :model do
       end
     end
 
+    context 'recent_chest_pain true' do
+      let(:standard_survey) { create :standard_survey, status: nil, recent_chest_pain: true }
+
+      it 'sets the correct status' do
+        service.call
+
+        standard_survey.reload
+
+        expect(standard_survey.status).to eq StandardSurvey::STATUS_RED
+        expect(standard_survey).to be_action_needed
+      end
+    end
+
     context 'high variation of breathing_difficulty_borg_scale' do
       let(:patient)                   { create :patient }
       let!(:previous_standard_survey) { create :standard_survey, :green, patient: patient, breathing_difficulty_borg_scale: '1' }

@@ -108,7 +108,7 @@ fr:
           "9": "9 - Très, très forte"
           "10": "10 - Maximale"
         heartbeats_per_minute: "Fréquence cardiaque"
-        recent_faintness: "Malaise récent"
+        recent_chest_pain: "Douleur thoracique récente"
         agreed_containment: "Respect des conditions de confinement"
         agreed_containment_comment: "Respect des conditions de confinement (commentaire)"
         completed_at: "Complété le"

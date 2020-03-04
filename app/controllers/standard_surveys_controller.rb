@@ -30,7 +30,7 @@ class StandardSurveysController < ApplicationController
 
 
     def standard_survey_params
-      params.require(:update_standard_survey_form).permit(:body_temperature, :cohabitants_recent_change, :breathing_difficulty_borg_scale, :heartbeats_per_minute, :recent_faintness, :agreed_containment, :agreed_containment_comment, :respiratory_rate_in_cycles_per_minute, :recent_cold_chill, :otp)
+      params.require(:update_standard_survey_form).permit(:body_temperature, :cohabitants_recent_change, :breathing_difficulty_borg_scale, :heartbeats_per_minute, :recent_chest_pain, :agreed_containment, :agreed_containment_comment, :respiratory_rate_in_cycles_per_minute, :recent_cold_chill, :otp)
     end
 
 end

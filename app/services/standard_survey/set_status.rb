@@ -26,6 +26,7 @@ class StandardSurvey::SetStatus
     def red_status?
       [
         standard_survey.breathing_difficulty_borg_scale.to_f > 5.0,
+        standard_survey.recent_chest_pain,
         high_breathing_difficulty_borg_scale_variation
       ].any?
     end
@@ -58,7 +59,7 @@ class StandardSurvey::SetStatus
         standard_survey.heartbeats_per_minute.to_i < 110,
         standard_survey.respiratory_rate_in_cycles_per_minute.to_i < 22,
         !standard_survey.recent_cold_chill,
-        !standard_survey.recent_faintness,
+        !standard_survey.recent_chest_pain,
         standard_survey.agreed_containment
       ].all?
     end

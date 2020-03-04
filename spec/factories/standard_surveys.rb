@@ -9,7 +9,7 @@ FactoryBot.define do
       cohabitants_recent_change             { nil }
       breathing_difficulty_borg_scale       { nil }
       heartbeats_per_minute                 { nil }
-      recent_faintness                      { nil }
+      recent_chest_pain                     { nil }
       agreed_containment                    { nil }
       agreed_containment_comment            { nil }
       respiratory_rate_in_cycles_per_minute { nil }
@@ -24,7 +24,7 @@ FactoryBot.define do
       cohabitants_recent_change             { false }
       breathing_difficulty_borg_scale       { "0" }
       heartbeats_per_minute                 { 109 }
-      recent_faintness                      { false }
+      recent_chest_pain                     { false }
       agreed_containment                    { true }
       respiratory_rate_in_cycles_per_minute { 21 }
       recent_cold_chill                     { false }
