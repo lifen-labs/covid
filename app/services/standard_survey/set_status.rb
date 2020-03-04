@@ -32,6 +32,7 @@ class StandardSurvey::SetStatus
 
     def set_red_status
       standard_survey.update!(status: ::StandardSurvey::STATUS_RED)
+      action_needed!
     end
 
     def orange_status?
@@ -46,6 +47,7 @@ class StandardSurvey::SetStatus
 
     def set_orange_status
       standard_survey.update!(status: ::StandardSurvey::STATUS_ORANGE)
+      action_needed!
     end
 
     def green_status?
@@ -75,4 +77,7 @@ class StandardSurvey::SetStatus
       (standard_survey.breathing_difficulty_borg_scale.to_f - previous_completed_standard_survey.breathing_difficulty_borg_scale.to_f) > 2.0
     end
 
+    def action_needed!
+      standard_survey.update!(action_needed: true)
+    end
 end

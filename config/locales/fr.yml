@@ -119,6 +119,8 @@ fr:
           red: "Rouge"
         respiratory_rate_in_cycles_per_minute: "Fréquence respiratoire"
         recent_cold_chill: "Frisson récent"
+        action_needed: "Action nécessaire"
+        action_done_at: "Action effectuée le"
       command_center:
         name: "Intitulé"
         city: "Ville"

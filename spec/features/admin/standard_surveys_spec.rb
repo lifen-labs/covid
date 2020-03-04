@@ -15,4 +15,22 @@ RSpec.describe 'standard_surveys', type: :feature do
   it 'show' do
     visit admin_standard_survey_path(standard_survey)
   end
+
+  context 'doing actions' do
+
+    let!(:standard_survey)    { create :standard_survey, action_needed: true }
+
+    it 'set the action as done' do
+      visit admin_standard_survey_path(standard_survey)
+
+      click_on "Marquer action faite"
+
+      expect(body).to have_content("Action effectuée")
+
+      standard_survey.reload
+
+      expect(standard_survey.action_done_at).to_not be_nil
+    end
+
+  end
 end

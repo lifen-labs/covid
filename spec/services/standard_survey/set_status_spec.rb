@@ -13,6 +13,7 @@ RSpec.describe StandardSurvey::SetStatus, type: :model do
       standard_survey.reload
 
       expect(standard_survey.status).to eq StandardSurvey::STATUS_GREEN
+      expect(standard_survey).to_not be_action_needed
     end
   end
 
@@ -25,6 +26,7 @@ RSpec.describe StandardSurvey::SetStatus, type: :model do
       standard_survey.reload
 
       expect(standard_survey.status).to eq StandardSurvey::STATUS_ORANGE
+      expect(standard_survey).to be_action_needed
     end
 
     context 'high body_temperature' do
@@ -36,6 +38,7 @@ RSpec.describe StandardSurvey::SetStatus, type: :model do
         standard_survey.reload
 
         expect(standard_survey.status).to eq StandardSurvey::STATUS_ORANGE
+        expect(standard_survey).to be_action_needed
       end
     end
 
@@ -48,6 +51,7 @@ RSpec.describe StandardSurvey::SetStatus, type: :model do
         standard_survey.reload
 
         expect(standard_survey.status).to eq StandardSurvey::STATUS_ORANGE
+        expect(standard_survey).to be_action_needed
       end
     end
 
@@ -60,6 +64,7 @@ RSpec.describe StandardSurvey::SetStatus, type: :model do
         standard_survey.reload
 
         expect(standard_survey.status).to eq StandardSurvey::STATUS_ORANGE
+        expect(standard_survey).to be_action_needed
       end
     end
 
@@ -72,6 +77,7 @@ RSpec.describe StandardSurvey::SetStatus, type: :model do
         standard_survey.reload
 
         expect(standard_survey.status).to eq StandardSurvey::STATUS_ORANGE
+        expect(standard_survey).to be_action_needed
       end
     end
 
@@ -84,6 +90,7 @@ RSpec.describe StandardSurvey::SetStatus, type: :model do
         standard_survey.reload
 
         expect(standard_survey.status).to eq StandardSurvey::STATUS_ORANGE
+        expect(standard_survey).to be_action_needed
       end
     end
   end
@@ -108,6 +115,7 @@ RSpec.describe StandardSurvey::SetStatus, type: :model do
         standard_survey.reload
 
         expect(standard_survey.status).to eq StandardSurvey::STATUS_RED
+        expect(standard_survey).to be_action_needed
       end
     end
 
@@ -123,6 +131,7 @@ RSpec.describe StandardSurvey::SetStatus, type: :model do
         standard_survey.reload
 
         expect(standard_survey.status).to eq StandardSurvey::STATUS_RED
+        expect(standard_survey).to be_action_needed
       end
     end
   end
