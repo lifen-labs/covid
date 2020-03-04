@@ -25,6 +25,11 @@ ActiveAdmin.setup do |config|
   #
   # eg:
   #   config.default_namespace = :hello_world
+  config.namespace :admin do |admin|
+    admin.build_menu do |menu|
+      menu.add label: 'Tableau de bord', url: "https://surveillance-covid-metabase.herokuapp.com/dashboard/2", target: "_blank"
+    end
+  end
   #
   # This will create resources in the HelloWorld module and
   # will namespace routes to /hello_world/*
@@ -326,3 +331,5 @@ ActiveAdmin.setup do |config|
   #
   # config.order_clause = MyOrderClause
 end
+
+
