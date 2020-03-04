@@ -49,7 +49,7 @@ class PatientForm
   )
 
   validates_presence_of :first_name, :last_name, :cellphone_number, :gender, :birthdate, :pregnant, :pregnant_since_in_weeks, :comorbidity_chronic_cardiac_disease,
-    :comorbidity_chronic_pulmonary_disease, :comorbidity_asthma, :comorbidity_chronic_kidney_disease, :comorbidity_liver_disease, :comorbidity_mild_liver_disease, :comorbidity_chronic_neurological_disorder, :comorbidity_malignant_neoplasia, :comorbidity_chronic_hemathological_disease, :comorbidity_hiv, :comorbidity_obesity, :comorbidity_diabetes_with_complications, :comorbidity_diabetes, :comorbidity_rheumatologic_disease, :comorbidity_dementia, :comorbidity_malnutrition, :comorbidity_smoking, :covid_initial_symptoms_started_on, :interstitial_alveolus_infiltrates, :sars_cov_2_treatment, :home_caregivers
+    :comorbidity_chronic_pulmonary_disease, :comorbidity_asthma, :comorbidity_chronic_kidney_disease, :comorbidity_liver_disease, :comorbidity_mild_liver_disease, :comorbidity_chronic_neurological_disorder, :comorbidity_malignant_neoplasia, :comorbidity_chronic_hemathological_disease, :comorbidity_hiv, :comorbidity_obesity, :comorbidity_diabetes_with_complications, :comorbidity_diabetes, :comorbidity_rheumatologic_disease, :comorbidity_dementia, :comorbidity_malnutrition, :comorbidity_smoking, :covid_initial_symptoms_started_on, :sars_cov_2_treatment, :home_caregivers
 
   private
 

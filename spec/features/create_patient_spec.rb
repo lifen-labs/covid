@@ -73,7 +73,6 @@ RSpec.describe 'creating a Patient', type: :feature do
 
           fill_in :create_patient_form_covid_initial_symptoms_started_on, with: covid_initial_symptoms_started_on #TODO: fix fucking JS
 
-          select "Non", from: :create_patient_form_interstitial_alveolus_infiltrates
           select "Non", from: :create_patient_form_sars_cov_2_treatment
           select "Non", from: :create_patient_form_home_caregivers
 

@@ -1,11 +1,11 @@
-<%= f.input :command_center_id, label: "Centre", collection: CommandCenter.all.order(name: :asc), include_blank: false %>
+<%= f.input :command_center_id, autofocus: true, label: "Centre", collection: CommandCenter.all.order(name: :asc), include_blank: false %>
 <%= f.input :covid_general_practitioner, as: :text, hint: "Nom / Prénom" %>
 
 
 <fieldset class="form-group">
   <legend>Informations de contact</legend>
 
-  <%= f.input :last_name, autofocus: true %>
+  <%= f.input :last_name %>
   <%= f.input :first_name %>
   <%= f.input :address, as: :text %>
   <%= f.input :cellphone_number, label: "Numéro de téléphone mobile" %>

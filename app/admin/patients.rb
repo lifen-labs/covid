@@ -14,11 +14,6 @@ ActiveAdmin.register Patient do
   scope "Non répondants", :without_completed_standard_survey
   scope "Tous", :all
 
-
-
-
-
-
   index do
     column(:latest_standard_survey_status) { |patient| status_tag(StandardSurvey.human_enum_name('status', patient.latest_standard_survey_status), class: "standard_survey_status_#{patient.latest_standard_survey_status}") }
     column("Comorbidité ?") {|p| status_tag(p.comorbibity?) }
