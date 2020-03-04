@@ -79,6 +79,7 @@ fr:
         comorbidity_other_comment: "Autre facteur de risque notable (commentaire)"
         command_center: "Centre"
         command_center_id: "Centre (ID)"
+        survey_periodicity_in_hours: "Périodicité d'envoi du questionaire (heures)"
       standard_survey: &standard_survey
         patient: "Patient"
         patient_id: "Patient (ID)"

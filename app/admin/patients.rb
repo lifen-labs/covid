@@ -85,4 +85,42 @@ ActiveAdmin.register Patient do
       redirect_to admin_patient_path(patient), alert: 'Erreur lors de la création du questionnaire standard'
     end
   end
+
+  sidebar "Informations principales", only: :show do
+    attributes_table_for patient, :command_center, :gender, :first_name, :last_name, :birthdate, :cellphone_number, :email, :created_at, :updated_at, :survey_periodicity_in_hours
+  end
+
+  show title: :to_s do
+    panel "Questionnaires standards" do
+      table_for(patient.standard_surveys.order(created_at: :desc)) do
+        column('') { |standard_survey| standard_survey }
+        column(:status) { |standard_survey| status_tag(StandardSurvey.human_enum_name('status', standard_survey.status), class: "standard_survey_status_#{standard_survey.status}") }
+        column :body_temperature
+        column :created_at
+        column :completed_at
+      end
+    end
+
+    panel "Informations générales" do
+      columns do
+        column do
+          attributes_table_for patient, :relative_cellphone_number, :general_practitioner, :covid_general_practitioner, :is_healthcare_professional, :pregnant, :home_caregivers, :home_caregivers_type
+        end
+        column do
+          attributes_table_for patient, :covid_initial_symptom, :covid_initial_symptoms_diagnosed_on, :covid_initial_symptoms_started_on, :covid_treatment_started_on, :interstitial_alveolus_infiltrates, :notable_long_term_treatments, :sars_cov_2_treatment, :sars_cov_2_treatment_name, :home_follow_up_elligible
+        end
+      end
+    end
+
+    panel "Comorbidité" do
+      columns do
+        column do
+          attributes_table_for patient, :comorbidity_chronic_cardiac_disease, :comorbidity_chronic_pulmonary_disease, :comorbidity_asthma, :comorbidity_chronic_kidney_disease, :comorbidity_liver_disease, :comorbidity_mild_liver_disease, :comorbidity_chronic_neurological_disorder, :comorbidity_malignant_neoplasia, :comorbidity_chronic_hemathological_disease, :comorbidity_hiv
+        end
+        column do
+          attributes_table_for patient, :comorbidity_obesity, :comorbidity_diabetes_with_complications, :comorbidity_diabetes, :comorbidity_rheumatologic_disease, :comorbidity_dementia, :comorbidity_malnutrition, :comorbidity_smoking, :comorbidity_other, :comorbidity_other_comment
+        end
+      end
+    end
+  end
 end
