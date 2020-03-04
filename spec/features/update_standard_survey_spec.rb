@@ -38,7 +38,7 @@ RSpec.describe 'updating a StandardSurvey', type: :feature do
 
         expect(standard_survey.body_temperature).to eq 37.2
         expect(standard_survey.breathing_difficulty_borg_scale).to eq "0,5"
-        expect(body).to have_content('Questionnaire renseigné avec succès.')
+        expect(body).to have_content("Vos données sont en cours d'analyse par l'équipe médicale qui prendra contact rapidement avec vous")
       end
     end
 

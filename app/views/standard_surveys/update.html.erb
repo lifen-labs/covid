@@ -1,5 +1,3 @@
 <%= render layout: '/shared/public_forms_outside_active_admin', locals: {title: "Questionnaire de suivi à domicile - Coronavirus Covid 19"} do %>
-  <div class="alert alert-success" role="alert">
-    Questionnaire renseigné avec succès.
-  </div>
+  <%= render partial: "update_#{@form.standard_survey.status}" %>
 <% end %>
