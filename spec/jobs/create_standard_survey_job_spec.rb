@@ -4,6 +4,7 @@ RSpec.describe CreateStandardSurveyJob, type: :model do
 
   let!(:patient_to_notify)        { create :patient }
   let!(:patient_not_to_notify)    { create :patient }
+  let!(:patient_inactive)         { create :patient, active: false }
 
   let!(:standard_survey)          { create :standard_survey, patient: patient_not_to_notify }
 

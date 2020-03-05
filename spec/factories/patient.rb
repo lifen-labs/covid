@@ -6,6 +6,7 @@ FactoryBot.define do
     cellphone_number                          { "+33#{rand(6..7)}#{rand(0..99_999_999).to_s.rjust(8, '0')}" }
     otp_secret                                { ROTP::Base32.random }
     survey_periodicity_in_hours               { 24 }
+    active                                    { true }
 
     gender                                    { "male" }
     birthdate                                 { 30.years.ago }

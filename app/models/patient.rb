@@ -16,6 +16,7 @@ class Patient < ApplicationRecord
   scope :orange,                             -> { where(latest_standard_survey_status: ::StandardSurvey::STATUS_ORANGE)}
   scope :red,                                -> { where(latest_standard_survey_status: ::StandardSurvey::STATUS_RED)}
   scope :without_completed_standard_survey,  -> { where(latest_standard_survey_status: nil)}
+  scope :active,                             -> { where(active: true)}
 
   def to_s
     return "Patient ##{id}" if first_name.blank? && last_name.blank?

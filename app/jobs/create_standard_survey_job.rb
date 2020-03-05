@@ -10,7 +10,7 @@ class CreateStandardSurveyJob < ApplicationJob
   private
 
     def selected_patients
-      Patient.all
+      Patient.active
     end
 
     def safely_create_standard_survey(patient)

@@ -70,6 +70,7 @@ ActiveAdmin.register Patient do
   filter :comorbidity_other
   filter :comorbidity_other_comment
   filter :created_at
+  filter :active
 
   action_item(:new_patient, only: :index) do
     link_to 'Nouveau Patient', new_patient_path
@@ -95,8 +96,32 @@ ActiveAdmin.register Patient do
     end
   end
 
+  action_item(:activate, only: :show, if: proc { !patient.active? }) do
+    link_to 'Activer', activate_admin_patient_path(patient)
+  end
+
+  member_action :activate, method: :get do
+    patient = Patient.find(params[:id])
+
+    patient.update!(active: true)
+
+    redirect_to admin_patient_path(patient), notice: 'Patient activé'
+  end
+
+  action_item(:deactivate, only: :show, if: proc { patient.active? }) do
+    link_to 'Désactiver', deactivate_admin_patient_path(patient)
+  end
+
+  member_action :deactivate, method: :get do
+    patient = Patient.find(params[:id])
+
+    patient.update!(active: false)
+
+    redirect_to admin_patient_path(patient), notice: 'Patient désactivé'
+  end
+
   sidebar "Informations principales", only: :show do
-    attributes_table_for patient, :command_center, :gender, :first_name, :last_name, :birthdate, :cellphone_number, :email, :created_at, :updated_at, :survey_periodicity_in_hours
+    attributes_table_for patient, :command_center, :gender, :first_name, :last_name, :birthdate, :cellphone_number, :email, :created_at, :updated_at, :survey_periodicity_in_hours, :active
   end
 
   show title: :to_s do
