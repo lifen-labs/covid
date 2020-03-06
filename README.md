@@ -101,7 +101,7 @@ Both `orange` and `red` statuses requires an action from the `AdminUser` which n
 
 ## Contributing
 
-- submit a Pull Request on the `develop` branch
+- submit a Pull Request on the `master` branch
 - provid maximum context
 - add the necessary specs to maintain a high test coverage
 
