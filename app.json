@@ -16,6 +16,13 @@
     },
     "TWILIO_PHONE_NUMBER": {
       "description": "Twilio Phone Number"
+    },
+    "ACTION_MAILER_DEFAULT_URL_HOST": {
+      "description": "Domain name"
+    },
+    "NEW_RELIC_APP_NAME": {
+      "description": "New Relic app name",
+      "value": "Covid"
     }
   },
   "addons": [
