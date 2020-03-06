@@ -33,7 +33,7 @@ gem install bundler
 #### Git
 
 ```bash
-git clone git@github.com:honestica/covid.git && cd covid
+git clone git@github.com:lifen-labs/covid.git && cd covid
 bundle exec install && yarn install
 bundle exec rails db:setup
 ```
@@ -108,4 +108,4 @@ Both `orange` and `red` statuses requires an action from the `AdminUser` which n
 
 ## License
 
-Covid is licensed under the TBD license. See the included LICENSE file for details.
+Covid is licensed under the GNU Affero General Public License. See the included LICENSE file for details.

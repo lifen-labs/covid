@@ -1,7 +1,7 @@
 {
   "name": "Covid",
   "description": "Covid-19 patients home monitorings app",
-  "repository": "https://github.com/honestica/covid",
+  "repository": "https://github.com/lifen-labs/covid",
   "keywords": [
     "rails",
     "covid19",
@@ -12,7 +12,7 @@
       "description": "Twilio Account ID"
     },
     "TWILIO_AUTH_TOKEN": {
-      "description": "Twilio AUth Token"
+      "description": "Twilio Auth Token"
     },
     "TWILIO_PHONE_NUMBER": {
       "description": "Twilio Phone Number"
