@@ -1,21 +1,21 @@
 # Covid
 
-Covid est une application qui a pour objectif de faciliter le suivi à domicile des patients atteints du covid-19.
+Covid is a web application which aims to facilitate covid-19 patients home monitoring via forms sent by SMS.
 
-## Configuration générale
+## Main configuration
 
 ### Prérequis
 
-Il s'agit d'une application Rails v6.0 qui tourne avec Ruby v2.6.
+It's a Rails v6.0 application which runs on Ruby v2.6+.
 
-Un nombre limité de dépendances externes doivent être configurées :
+It requires a limited number of dependencies:
 
 - PostgreSQL (v10.4+)
 - Redis (Sidekiq)
-- Headless Chrome (tests d'intégration)
+- Headless Chrome (integration specs)
 - NodeJS v12 (LTS)
 
-Il est conseillé d'utiliser [Homebrew](https://brew.sh/index_fr.html) pour installer ces dépendances :
+The best way to install them is to use [Homebrew](https://brew.sh/index_fr.html):
 
 ```bash
 brew update
@@ -25,56 +25,62 @@ brew cask install chromedriver
 
 #### Ruby
 
-Vous pouvez ensuite installer Ruby via le manager de versions [rbenv](https://github.com/rbenv/rbenv) (la lecture de [cet article](http://octopress.org/docs/setup/rbenv/) est vivement conseillée pour effectuer les modifications nécessaires à votre `.bash_profile`)
-
 ```bash
 rbenv install 2.6.5
 ```
-
-Enfin il est conseillé d'avoir installé les éléments additionels d'Xcode (via `xcode-select --install`)
 
 ### Installation
 
 #### Git
 
-La première étape consiste à cloner le repo Github:
-
 ```bash
-git clone git@github.com:honestica/poc-parcours.git
-cd poc-parcours
+git clone git@github.com:honestica/covid.git
+cd covid
 gem install bundler
 bundle exec install
 yarn install
 bundle exec rails db:setup
 ```
 
-#### Variables d'environnement
-
-L'application nécessite la configuration de certaines variables d'environnement pour fonctionner correctement. Ces informations ne sont pas versionnées pour des raisons évidentes.
-
-La version staging de l'application étant hébergée sur Heroku nous utilisons la commande `heroku local` pour lancer le serveur de développement ([plus d'informations](https://devcenter.heroku.com/articles/heroku-local)). Pour définir vos propres variables il sera nécessaire de suivre les commandes suivantes :
+#### Environment variables
 
 ```bash
 cp .env.example .env
 ```
 
-#### Lancement du serveur de développement
+#### Twilio
+
+We use Twilio's API to send SMS:
+- `TWILIO_ACCOUNT_ID` (required)
+- `TWILIO_AUTH_TOKEN` (required)
+- `TWILIO_PHONE_NUMBER` (required)
+
+#### Slack
+
+We use Slack to monitor failed SMS:
+- `SLACK_HOOK_URL` (optional)
+
+#### Starting local server
 
 ```bash
 heroku local
 ```
 
-Puis [http://localhost:5000/admin/](http://localhost:5000/admin/) et de vous connecter avec les identifiants présents dans le fichier de seeds : `admin@example.com` / `password`.
+Then [http://localhost:5000/admin/](http://localhost:5000/admin/) with the following credentials: `admin@example.com` / `password`.
 
 
-#### Lancement des tests
+#### Specs
 
 ```bash
 bundle exec rspec spec/
 ```
 
-ou
+or
 
 ```bash
 bundle exec guard
 ```
+
+## Deployment
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)

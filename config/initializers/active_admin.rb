@@ -27,7 +27,9 @@ ActiveAdmin.setup do |config|
   #   config.default_namespace = :hello_world
   config.namespace :admin do |admin|
     admin.build_menu do |menu|
-      menu.add label: 'Tableau de bord', url: "https://surveillance-covid-metabase.herokuapp.com/dashboard/2", target: "_blank"
+      if ENV['EXTERNAL_DASHBOARD_URL']
+        menu.add label: 'Tableau de bord', url: ENV['EXTERNAL_DASHBOARD_URL'], target: "_blank"
+      end
     end
   end
   #

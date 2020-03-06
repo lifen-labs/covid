@@ -1,0 +1,27 @@
+{
+  "name": "Covid",
+  "description": "Covid-19 patients home monitorings app",
+  "repository": "https://github.com/honestica/covid",
+  "keywords": [
+    "rails",
+    "covid19",
+    "healthcare"
+  ],
+  "env": {
+    "TWILIO_ACCOUNT_ID": {
+      "description": "Twilio Account ID"
+    },
+    "TWILIO_AUTH_TOKEN": {
+      "description": "Twilio AUth Token"
+    },
+    "TWILIO_PHONE_NUMBER": {
+      "description": "Twilio Phone Number"
+    }
+  },
+  "addons": [
+    "heroku-postgresql",
+    "heroku-redis",
+    "newrelic",
+    "sumologic"
+  ]
+}

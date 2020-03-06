@@ -3,9 +3,6 @@ require_relative './production'
 Rails.application.configure do
   config.log_level = :debug
 
-  # Devise & external links
-  config.action_mailer.default_url_options = {host: 'app-staging.surveillance-covid19.fr'}
-
   # Enable preview mailers
   # Add the ENABLE_MAILER_PREVIEWS to your enviroment to enable.
   if ENV['ENABLE_MAILER_PREVIEWS'].present?

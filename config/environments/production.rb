@@ -111,5 +111,5 @@ Rails.application.configure do
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
 
   # Devise & external links
-  config.action_mailer.default_url_options = {host: 'app.surveillance-covid19.fr'}
+  config.action_mailer.default_url_options = {host: ENV['ACTION_MAILER_DEFAULT_URL_HOST']}
 end
