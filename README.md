@@ -1,6 +1,6 @@
 # Covid
 
-Covid is a web application which aims to facilitate covid-19 patients home monitoring via forms sent by SMS.
+Covid is a web application which aims to facilitate covid-19 patients' self-monitoring at home via forms sent by SMS.
 
 ## Main configuration
 
@@ -62,7 +62,7 @@ We use Slack to monitor failed SMS:
 heroku local
 ```
 
-Then [http://localhost:5000/admin/](http://localhost:5000/admin/) with the seeds credentials: `admin@example.com` / `password`.
+Then visit [http://localhost:5000/admin/](http://localhost:5000/admin/) with the seeds credentials: `admin@example.com` / `password`.
 
 
 #### Specs
@@ -85,24 +85,24 @@ The fastest way to deploy `covid` is using Heroku:
 
 ## Data structure
 
-An `AdminUser` can connect to the app via a login/password. He then can:
-- manage a `CommandCenter` : this app can be deployed once and used in multiple localizations (TODO: add an authorization framework like pundit to manage different access levels through admin users)
+Once signed in to the app via login/password, an `AdminUser` can:
+- manage a `CommandCenter` : the app can be deployed once and used in multiple locations (TODO: add an authorisation framework like Pundit to manage access levels)
 - onboard a `Patient`
-- manually create a `StandardSurvey` or wait for the automated standard survey creation process (one every 24 hours) to create one
+- manually create a `StandardSurvey`; otherwise, an automated process creates one every 24 hours.
 
-When a `StandardSurvey` is created, a SMS is sent with a secret and temporary link. The `Patient` can fill in the form from his phone.
-Once the `StandardSurvey` is submitted, the app sets the operationnal status :
+When a `StandardSurvey` is created, an SMS is sent with a secret temporary link. The `Patient` can then fill the form directly on his phone.
+Once the `StandardSurvey` is submitted, the app sets the operational status :
 - `green` : all good
 - `yellow` : default status, still all good
 - `orange` : a healthcare professional needs to check the survey results
 - `red` : a healthcare professional needs to call the patient
 
-Both `orange` and `red` statuses requires an action from the `AdminUser` which needs to be log (with a mandatory comment) via the app.
+Both `orange` and `red` statuses require an action from the `AdminUser`. Each action has to be recorded through a mandatory comment within the app.
 
 ## Contributing
 
 - submit a Pull Request on the `master` branch
-- provid maximum context
+- provide maximum context
 - add the necessary specs to maintain a high test coverage
 
 
