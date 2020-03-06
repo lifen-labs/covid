@@ -105,6 +105,9 @@ Find details for contributing in the [contribution guide].
 
 [contribution guide]: https://github.com/lifen-labs/covid/blob/master/CONTRIBUTING.md
 
+## Maintainers
+
+* Etienne Depaulis (https://github.com/EtienneDepaulis)
 
 ## License
 
