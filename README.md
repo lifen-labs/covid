@@ -101,9 +101,9 @@ Both `orange` and `red` statuses require an action from the `AdminUser`. Each ac
 
 ## Contributing
 
-- submit a Pull Request on the `master` branch
-- provide maximum context
-- add the necessary specs to maintain a high test coverage
+Find details for contributing in the [contribution guide].
+
+[contribution guide]: https://github.com/lifen-labs/covid/blob/master/CONTRIBUTING.md
 
 
 ## License
