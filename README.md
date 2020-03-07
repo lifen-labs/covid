@@ -85,6 +85,8 @@ The fastest way to deploy `covid` is using Heroku:
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
+:warning: **Disclaimer** Heroku might not be suitable to host healthcare datas in your country. We are providing this deploy link on Heroku because we think it's the easiest way to deploy a web application ;) :warning:
+
 ## Data structure
 
 Once signed in to the app via login/password, an `AdminUser` can:
