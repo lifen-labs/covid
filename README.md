@@ -2,6 +2,8 @@
 
 Covid is a web application which aims to facilitate covid-19 patients' self-monitoring at home via forms sent by SMS.
 
+**Demo :** [video](https://www.youtube.com/watch?v=wwDJNR6SKmI)
+
 ## Main configuration
 
 ### Installation
