@@ -136,10 +136,30 @@ fr:
               taken: "'%{value}' n'est pas disponible"
   simple_form:
     labels:
-      create_patient_form:
+      create_patient_form: &patient_form
         <<: *patient
-      update_standard_survey_form:
+      update_patient_form:
+        <<: *patient_form
+      update_standard_survey_form: &standard_survey_form
         <<: *standard_survey
+        cohabitants_recent_change: "Depuis le dernier questionnaire, y-a-t-il eu un changement parmi les gens présents à votre domicile pendant le confinement ?"
+        body_temperature: "Prenez votre température"
+        breathing_difficulty_borg_scale: "Cochez la case décrivant le mieux votre gêne respiratoire (sensation d’étouffement, dyspnée)"
+        heartbeats_per_minute: "Mesurez votre fréquence cardiaque"
+        respiratory_rate_in_cycles_per_minute: "Mesurez votre fréquence respiratoire"
+        recent_cold_chill: "Depuis que vous avez rempli le dernier questionnaire, avez-vous eu des frissons ?"
+        recent_chest_pain: "Depuis que vous avez rempli le dernier questionnaire, avez-vous eu une douleur thoracique ?"
+        agreed_containment: "Vous sentez vous capable de continuer à respecter les conditions de confinement ?"
+        agreed_containment_comment: "Si Non, pourquoi ?"
+      create_action_form:
+        <<: *standard_survey_form
+    hints:
+      update_standard_survey_form:
+        body_temperature: "°C"
+        heartbeats_per_minute: "/minute"
+        respiratory_rate_in_cycles_per_minute: "cycles/minutes"
+        recent_cold_chill: "Un frisson est une sensation de froid accompagnée de tremblements."
+        agreed_containment_comment: "optionnel"
   date:
     formats:
       datepicker: "%d/%m/%Y"
