@@ -1,10 +1,7 @@
-<%= render layout: '/shared/public_forms_outside_active_admin', locals: {title: "Questionnaire de suivi à domicile - Coronavirus Covid 19"} do %>
+<%= render layout: '/shared/public_forms_outside_active_admin', locals: {title: t('simple_form.titles.update_standard_survey_form')} do %>
 
   <div class="alert alert-info" role="alert">
-    Ce court questionnaire permet de suivre l’évolution de vos symptômes. Toutes les données sont revues par des équipes soignantes. Ce questionnaire sera répété régulièrement.
-    <br/>
-    <br/>
-    <strong>En cas d’urgence, vous pouvez contacter l’équipe médicale via le +33 7 57 91 69 11 ou le SAMU centre 15.</strong>
+    <%= t('simple_form.messages.update_standard_survey_form.intro_html') %>
   </div>
 
   <hr/>
@@ -15,16 +12,12 @@
     <%= f.input :cohabitants_recent_change, autofocus: true, as: :radio_buttons %>
     <%= f.input :body_temperature, as: :float %>
 
-    <p>
-      <a href="https://www.ameli.fr/assure/sante/bons-gestes/petits-soins/prendre-temperature" target="_blank">Comment prendre sa température ?</a>
-    </p>
+    <%= t('simple_form.messages.update_standard_survey_form.body_temperature_instructions_html') %>
 
     <%= f.input :breathing_difficulty_borg_scale, as: :select, include_blank: false, collection: StandardSurvey.enum_filter_collection(:breathing_difficulty_borg_scales) %>
     <%= f.input :heartbeats_per_minute, as: :integer %>
 
-    <p>
-      <a href="https://fr.wikihow.com/mesurer-votre-pouls" target="_blank">Comment mesurer sa fréquence cardiaque ?</a>
-    </p>
+    <%= t('simple_form.messages.update_standard_survey_form.heartbeats_per_minute_instructions_html') %>
 
     <%= f.input :respiratory_rate_in_cycles_per_minute, as: :integer %>
     <%= f.input :recent_cold_chill, as: :radio_buttons %>
@@ -32,6 +25,6 @@
     <%= f.input :agreed_containment, as: :radio_buttons %>
     <%= f.input :agreed_containment_comment, as: :text %>
 
-    <%= f.button :submit, value: "Valider", data: { disable_with: "Validation en cours ..." }, class: "btn btn-primary" %>
+    <%= f.button :submit, value: t('simple_form.actions.update_standard_survey_form.submit'), data: { disable_with: t('simple_form.actions.update_standard_survey_form.disable_with') }, class: "btn btn-primary" %>
   <% end %>
 <% end %>

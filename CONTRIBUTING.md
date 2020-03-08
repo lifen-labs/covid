@@ -9,7 +9,7 @@ instead.
 3. Do a small search on the issues tracker before submitting your issue to
 see if it was already reported or fixed. In case it was not, create your report. If you are getting exceptions, please include the full backtrace.
 
-4. Feel free to add a localization if needed. Our "I18n" coverage is not perfect (~30% of specific labels/messages are still in French), we will provide support if need be ;)
+4. Feel free to add a localization if needed. Our "I18n" coverage is not perfect but we are working on it. You'll need to add a `yml` file and manage a few specific localized partials (search for `.fr.html.erb`).
 
 That's it! The more information you give, the more easy it becomes for us to
 track it down and fix it. Ideal scenario would be adding the issue to our
