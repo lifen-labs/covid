@@ -1,8 +1,8 @@
-<%= render layout: '/shared/forms_outside_active_admin', locals: {back_button_path: admin_patients_path, title: "Inclure un nouveau patient dans le suivi à domicile"} do %>
+<%= render layout: '/shared/forms_outside_active_admin', locals: {back_button_path: admin_patients_path, title: t('simple_form.titles.create_patient_form')} do %>
   <%= simple_form_for(@form, method: :post, url: patients_path) do |f| %>
 
     <%= render 'form_attributes', f: f %>
 
-    <%= f.button :submit, value: "Créer", data: { disable_with: "Validation en cours ..." }, class: "btn btn-primary" %>
+    <%= f.button :submit, value: t('simple_form.actions.create_patient_form.submit'), data: { disable_with: t('simple_form.actions.create_patient_form.disable_with') }, class: "btn btn-primary" %>
   <% end %>
 <% end %>

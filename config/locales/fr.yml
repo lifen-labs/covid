@@ -136,19 +136,44 @@ fr:
               taken: "'%{value}' n'est pas disponible"
   simple_form:
     actions:
+      create_patient_form:
+        disable_with: "Validation en cours ..."
+        submit: "Créer"
+      update_patient_form:
+        disable_with: "Validation en cours ..."
+        submit: "Mettre à jour"
       update_standard_survey_form:
         disable_with: "Validation en cours ..."
         submit: "Valider"
     titles:
+      create_patient_form: "Inclure un nouveau patient dans le suivi à domicile"
+      update_patient_form: "Modifier un patient"
       update_standard_survey_form: "Questionnaire de suivi à domicile - Coronavirus Covid 19"
     messages:
       update_standard_survey_form:
         intro_html: "Ce court questionnaire permet de suivre l’évolution de vos symptômes. Toutes les données sont revues par des équipes soignantes. Ce questionnaire sera répété régulièrement.<br/><br/><strong>En cas d’urgence, vous pouvez contacter l’équipe médicale via le +33 7 57 91 69 11 ou le SAMU centre 15.</strong>"
         body_temperature_instructions_html: '<p><a href="https://www.ameli.fr/assure/sante/bons-gestes/petits-soins/prendre-temperature" target="_blank">Comment prendre sa température ?</a></p>'
         heartbeats_per_minute_instructions_html: '<p><a href="https://fr.wikihow.com/mesurer-votre-pouls" target="_blank">Comment mesurer sa fréquence cardiaque ?</a></p>'
+      patient_form:
+        home_follow_up_elligible_criterias_html: "<p><strong>Répond aux critères de suivi à domicile :</strong><ul><li>Absence de detresse respiratoire</li><li>Confinement psychologiquement possible</li><li>Confinement matériellement possible</li><li>Accepte le confinement avec suivi digital à distance</li></ul></p>"
+    fieldsets:
+      patient_form:
+        contact_informations: "Informations de contact"
+        patient_informations: "Informations sur le patient"
+        comorbidities: "Comorbidités"
+        covid_informations: "Informations sur l’infection Covid-19"
     labels:
       create_patient_form: &patient_form
         <<: *patient
+        command_center_id: "Centre"
+        cellphone_number: "Numéro de téléphone mobile"
+        email: "Email du patient"
+        pregnant_since_in_weeks: "Si Oui, précisez le terme en nombre semaines d'aménorrhée"
+        comorbidity_other_comment: "Si Oui, lesquels"
+        interstitial_alveolus_infiltrates: "Si il y eu une imagerie pulmonaire, y-avait-il des infiltrats alvéolo interstitiel"
+        sars_cov_2_treatment_name: "Si Oui, lequel"
+        home_caregivers: "Présence de personnes dans le même logement / au domicile"
+        home_caregivers_type: "Si Oui, précisez (femme, enfant, proche, etc...)"
       update_patient_form:
         <<: *patient_form
       update_standard_survey_form: &standard_survey_form
@@ -165,13 +190,19 @@ fr:
       create_action_form:
         <<: *standard_survey_form
     hints:
+      create_patient_form: &patient_form_hints
+        covid_general_practitioner:  "Nom / Prénom"
+        general_practitioner: "Nom / Prénom / Coordonnées"
+        pregnant_since_in_weeks: "semaines"
+        interstitial_alveolus_infiltrates: "laissez vide si pas d'imagerie réalisée"
+      update_patient_form:
+        <<: *patient_form_hints
       update_standard_survey_form:
         body_temperature: "°C"
         heartbeats_per_minute: "/minute"
         respiratory_rate_in_cycles_per_minute: "cycles/minutes"
         recent_cold_chill: "Un frisson est une sensation de froid accompagnée de tremblements."
         agreed_containment_comment: "optionnel"
-
   date:
     formats:
       datepicker: "%d/%m/%Y"
