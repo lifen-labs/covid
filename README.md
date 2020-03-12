@@ -53,6 +53,8 @@ We use Twilio's API to send SMS:
 - `TWILIO_AUTH_TOKEN` (required)
 - `TWILIO_PHONE_NUMBER` (required)
 
+[How to create a text messaging account with Twilio ?](https://support.vision6.com.au/hc/en-us/articles/230673727-Text-Messaging-Account-Setup-with-Twilio)
+
 ##### Slack
 
 We use Slack to monitor failed SMS:
