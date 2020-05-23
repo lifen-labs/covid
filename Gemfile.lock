@@ -223,7 +223,7 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
     public_suffix (4.0.3)
-    puma (4.3.3)
+    puma (4.3.5)
       nio4r (~> 2.0)
     raabro (1.1.6)
     rack (2.2.2)
@@ -411,7 +411,7 @@ DEPENDENCIES
   newrelic_rpm
   pg (>= 0.18, < 2.0)
   phony_rails
-  puma (~> 4.1)
+  puma (~> 4.3)
   rails (~> 6.0.2, >= 6.0.2.1)
   rails-assets-bootstrap (> 4.1.2)!
   rails-i18n!
